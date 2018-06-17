@@ -22,11 +22,11 @@ bot.on("ready", () => {
 bot.on('message', message => {
     if (message.content === '$roll') {
 
-            var result = Math.floor((Math.random() * 100));
+            
        
         
         
-   message.channel.send(result);
+   message.channel.send("bob");
     }
 });
 
