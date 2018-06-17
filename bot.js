@@ -28,7 +28,7 @@ client.on('message', message => {
         .addField(":game_die: You rolled a: ", + result);
         
    message.channel.send(embed);
-
-
+    }
+});
 
 bot.login(process.env.BOT_TOKEN);
