@@ -27,11 +27,5 @@ bot.on("message", async message => {
     if(message.author.bot) return;
     if(message.channel.type === "dm") return message.channel.send(`Hello! My prefix is "$"! Invite me to your server with the following link {}} Or join our server main! {https://discord.gg/5Du3jDt} Thanks!`);
 
-    let messageArray = message.content.split(/\s+/g);
-    let commands = messageArray[0];
-    let args = messageArray.slice(1);
-    let input = messageArray[1];
-
-
 
 bot.login(process.env.BOT_TOKEN);
