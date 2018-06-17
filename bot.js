@@ -26,13 +26,13 @@ bot.on('message', message => {
       
         
         
-   message.channel.send("bob");
+   message.channel.send('bob');
     }
 });
 
 bot.on('message', message => {
     if (message.content === 'ping') {
-    	message.reply("pong");
+    	message.reply('pong');
   	}
 });
 
