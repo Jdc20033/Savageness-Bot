@@ -22,7 +22,7 @@ bot.on("ready", () => {
 bot.on('message', message => {
     if (message.content === '$roll') {
 
-            var result = Math.floor((Math.random() * 100) + 1);
+            var result = Math.floor((Math.random() * 100));
        
         
         
