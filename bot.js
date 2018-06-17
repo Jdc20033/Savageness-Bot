@@ -18,7 +18,7 @@ bot.on("ready", () => {
             bot.user.setActivity(`$help | Playing With ${bot.channels.size} Users!`);
           });
 
-client.on('message', message => {
+bot.on('message', message => {
     if (message.content === '$roll') {
 
             var result = Math.floor((Math.random() * 100) + 1);
