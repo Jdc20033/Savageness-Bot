@@ -22,14 +22,19 @@ bot.on("ready", () => {
 bot.on('message', message => {
     if (message.content === '$roll') {
 
-            
-       
+        
+      
         
         
    message.channel.send("bob");
     }
 });
 
+bot.on('message', message => {
+    if (message.content === 'ping') {
+    	message.reply("pong");
+  	}
+});
 
 
 bot.login(process.env.BOT_TOKEN);
