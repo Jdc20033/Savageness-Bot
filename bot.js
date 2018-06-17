@@ -24,11 +24,9 @@ bot.on('message', message => {
 
             var result = Math.floor((Math.random() * 100) + 1);
        
-        let embed1 = new Discord.RichEmbed()
-        .setColor("#FF0000")
-        .addField(":game_die: You rolled a: ", + result);
         
-   message.channel.send(embed1);
+        
+   message.channel.send(result);
     }
 });
 
