@@ -17,17 +17,18 @@ bot.on("ready", () => {
             console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
             bot.user.setActivity(`$help | Playing With ${bot.channels.size} Users!`);
           });
+//cmds
 
 bot.on('message', message => {
     if (message.content === '$roll') {
 
             var result = Math.floor((Math.random() * 100) + 1);
        
-        let embed = new Discord.RichEmbed()
+        let embed1 = new Discord.RichEmbed()
         .setColor("#FF0000")
         .addField(":game_die: You rolled a: ", + result);
         
-   message.channel.send(embed);
+   message.channel.send(embed1);
     }
 });
 
