@@ -107,7 +107,7 @@ let embed2 = new Discord.RichEmbed()
 }
 });    
 //kick
-bot.on("message", message => {
+bot.on("message", async message => {
     if (message.content === "$kick") {
        if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the proper roles!");
        let messageArray = message.content.split(/\s+/g);
