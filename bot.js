@@ -58,7 +58,7 @@ bot.on("message", message => {
     }
 });
 //ping
-bot.on("message", message => {
+bot.on("message", async message => {
     if (message.content === "$ping") {
 
 const m = await message.channel.send("Ping?");
