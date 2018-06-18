@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client({disableEveryone: true});
-
+const fs = require("fs");
 
     bot.on("ready", () => {
         console.log(`${bot.user.username} has started! With ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} servers.`);
@@ -56,25 +56,12 @@ bot.on("message", message => {
        
     }
 });
-//ban
+//ping
 bot.on("message", async message => {
-    if (message.content === "$ban") {
+    if (message.content === "$ping") {
 
-        if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the proper roles!");
-
-  let member = message.mentions.members.first();
-  if(!member)
-    return message.reply("You did not specify a user!");
-  if(!member.bannable) 
-    return message.reply("I cannot ban this user! Do they have a higher role? Do I have ban permissions?");
-
-  let reason = args.slice(1).join(' ');
-  if(!reason)
-    return message.reply("Please indicate a reason for the ban!");
-  
- await member.ban(reason)
-    .catch(error => message.reply(`Sorry ${message.author} I couldn't ban the user. Reason: ${error}`));
-  message.reply(`${member.user.tag} has been banned by ${message.author.tag} Reason: ${reason}`);
-}
-});
+const m = await message.channel.send("Ping?");
+        m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`);
+      }
+        
 bot.login(process.env.BOT_TOKEN);
