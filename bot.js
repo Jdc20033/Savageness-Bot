@@ -31,7 +31,7 @@ bot.on("message", async message => {
     let commands = messageArray[0];
     let args = messageArray.slice(1);
     let input = messageArray[1];
-
+});
 
 
 bot.login(process.env.BOT_TOKEN);
