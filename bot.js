@@ -1,7 +1,9 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client({disableEveryone: true});
-const botSettings = require('botsettings.json');   
-const prefix = botSettings.prefix;
+const botSettings = require('./botsettings.json');   
+const prefix = botsettings.prefix;
+const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+const command = args.shift().toLowerCase();
 
 bot.on("ready", () => {
         console.log(`${bot.user.username} has started! With ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} servers.`);
@@ -27,7 +29,7 @@ bot.on("message", async message => {
 });
 //roll
 bot.on("message", message => {
-    if (message.content === "$roll") {
+     if(command === "say") {
     var result = Math.floor((Math.random() * 100) + 1);
        
         let embed = new Discord.RichEmbed()
