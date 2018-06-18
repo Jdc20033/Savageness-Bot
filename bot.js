@@ -109,7 +109,7 @@ let embed2 = new Discord.RichEmbed()
 }
 });    
 //kick
-bot.on("message", async message => {
+bot.on("message", message => {
 
     if (message.content === "$kick") {
 if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the proper roles!");
@@ -125,7 +125,7 @@ if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send
     if(reason)
       return message.reply("Please indicate a reason for the kick!");
     
-    await member.kick(reason)
+     member.kick(reason)
       .catch(error => message.reply(`Sorry ${message.author} I couldn't kick that user. Reason: ${error}`));
     message.reply(`${member.user.tag} has been kicked by ${message.author.tag}. Reason: ${reason}`);
   }
