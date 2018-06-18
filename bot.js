@@ -3,22 +3,9 @@ const bot = new Discord.Client({disableEveryone: true});
 
 
 bot.on("message", async message => {
-  // This event will run on every single message received, from any channel or DM.
   const prefix = ("$");
-  // It's good practice to ignore other bots. This also makes your bot ignore itself
-  // and not get into a spam loop (we call that "botception").
   if(message.author.bot) return;
-  
-  // Also good practice to ignore any message that does not start with our prefix, 
-  // which is set in the configuration file.
   if(message.content.indexOf(prefix) !== 0) return;
-  
-  // Here we separate our "command" name, and our "arguments" for the command. 
-  // e.g. if we have the message "+say Is this the real life?" , we'll get the following:
-  // command = say
-  // args = ["Is", "this", "the", "real", "life?"]
-  const args = message.content.slice(prefix.length).trim().split(/ +/g);
-  const command = args.shift().toLowerCase();
 });
 
 bot.on("ready", () => {
@@ -41,7 +28,6 @@ bot.on("ready", () => {
 bot.on("message", async message => {
     if(message.author.bot) return;
     if(message.channel.type === "dm") return message.channel.send(`Hello! My prefix is "$"! Invite me to your server with the following link {https://discordapp.com/oauth2/authorize?client_id=458018248190066730&permissions=8&scope=bot}} Or join our server main! {https://discord.gg/5Du3jDt} Thanks!`);
-    const messageArray = message.content.split(/\s+/g);
 });
 //roll
 bot.on("message", message => {
@@ -130,6 +116,8 @@ let embed2 = new Discord.RichEmbed()
 //say
 bot.on("message", async message => {
     if (message.content === "$say") {
+    const prefix = ("$");
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const sayMessage = args.join(" ");
     // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
     message.delete().catch(O_o=>{}); 
