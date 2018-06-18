@@ -72,7 +72,7 @@ bot.on("message", message => {
   if(!reason)
     return message.reply("Please indicate a reason for the ban!");
   
-  await member.ban(reason)
+  member.ban(reason)
     .catch(error => message.reply(`Sorry ${message.author} I couldn't ban the user. Reason: ${error}`));
   message.reply(`${member.user.tag} has been banned by ${message.author.tag} Reason: ${reason}`);
 }
