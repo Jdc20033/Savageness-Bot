@@ -52,4 +52,5 @@ bot.on("message", message => {
 
        msg.delete();
     }
+});
 bot.login(process.env.BOT_TOKEN);
