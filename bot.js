@@ -118,6 +118,7 @@ bot.on("message", async message => {
     if (message.content === "$say") {
     const prefix = ("$");
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
     const sayMessage = args.join(" ");
     // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
     message.delete().catch(O_o=>{}); 
