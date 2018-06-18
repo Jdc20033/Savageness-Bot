@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client({disableEveryone: true});
-
-    bot.on("ready", () => {
+   
+bot.on("ready", () => {
         console.log(`${bot.user.username} has started! With ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} servers.`);
         bot.user.setGame(`in ${bot.channels.size} servers! | $help`)
     
@@ -21,6 +21,7 @@ const bot = new Discord.Client({disableEveryone: true});
 bot.on("message", async message => {
     if(message.author.bot) return;
     if(message.channel.type === "dm") return message.channel.send(`Hello! My prefix is "$"! Invite me to your server with the following link {https://discordapp.com/oauth2/authorize?client_id=458018248190066730&permissions=8&scope=bot}} Or join our server main! {https://discord.gg/5Du3jDt} Thanks!`);
+    const messageArray = message.content.split(/\s+/g);
 });
 //roll
 bot.on("message", message => {
@@ -108,6 +109,9 @@ let embed2 = new Discord.RichEmbed()
 //kick
 bot.on("message", message => {
     if (message.content === "$kick") {
+       let messageArray = message.content.split(/\s+/g);
+       let commands = messageArray[0];
+       let args = messageArray.slice(1);
         if(!message.member.roles.some(r=>["Administrator", "Moderator"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
       let member = message.mentions.members.first()
@@ -115,10 +119,7 @@ bot.on("message", message => {
       return message.reply("Please mention a valid member of this server");
     if(!member.kickable) 
       return message.reply("I cannot kick this user! Do they have a higher role? Do I have kick permissions?");
-        let messageArray = message.content.split(/\s+/g);
-        let commands = messageArray[0];
-        var input = messageArray[1];
-        let reason = input(' ');
+        let reason = args.join(" ");
     if(!reason) reason = "No reason provided";
         member.kick(reason)
       .catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
@@ -130,8 +131,8 @@ bot.on("message", message => {
     if (message.content === "$say") {
     let messageArray = message.content.split(/\s+/g);
     let commands = messageArray[0];
-    var input = messageArray[1];
-    const sayMessage = input(" ");
+    let args = messageArray.slice(1);
+    const sayMessage = args.join(" ");
     message.delete().catch(O_o=>{}); 
     message.channel.send(sayMessage);
     
