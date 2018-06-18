@@ -60,20 +60,6 @@ message.channel.send(embed);
 
 }
 
-//avatar
-let message = await message.channel.send("Loading avatar...")
-      let target = message.mentions.users.first() || message.author;
-   
-   
-      await message.channel.send({files: [
-      {   
-          attachment: target.displayAvatarURL,
-          name: "avatar.png"
-      }
-       ]});
-
-       message.delete();
-    }
 //roll
     var result = Math.floor((Math.random() * 100) + 1);
        
