@@ -22,9 +22,9 @@ const fs = require("fs");
 bot.on("message", async message => {
     if(message.author.bot) return;
     if(message.channel.type === "dm") return message.channel.send(`Hello! My prefix is "$"! Invite me to your server with the following link {https://discordapp.com/oauth2/authorize?client_id=458018248190066730&permissions=8&scope=bot}} Or join our server main! {https://discord.gg/5Du3jDt} Thanks!`);
-
+    let args = messageArray.slice(1);
+    let input = messageArray[1];
 });
-
 //roll
 bot.on("message", message => {
     if (message.content === "$roll") {
