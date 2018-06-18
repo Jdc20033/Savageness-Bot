@@ -117,8 +117,8 @@ bot.on("message", message => {
       return message.reply("I cannot kick this user! Do they have a higher role? Do I have kick permissions?");
         let messageArray = message.content.split(/\s+/g);
         let commands = messageArray[0];
-        let args = messageArray.slice(1);
-        let reason = args.slice(1).join(' ');
+        let input = messageArray[1];
+        let reason = input(' ');
     if(!reason) reason = "No reason provided";
         member.kick(reason)
       .catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
@@ -130,8 +130,8 @@ bot.on("message", message => {
     if (message.content === "$say") {
     let messageArray = message.content.split(/\s+/g);
     let commands = messageArray[0];
-    let args = messageArray.slice(1);
-    const sayMessage = args.join(" ");
+    let input = messageArray[1];
+    const sayMessage = input(" ");
     message.delete().catch(O_o=>{}); 
     message.channel.send(sayMessage);
     
