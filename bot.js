@@ -122,4 +122,14 @@ bot.on("message", message => {
     message.reply(`${member.user.tag} has been kicked by ${message.author.tag}.`);
 };
 });
- bot.login(process.env.BOT_TOKEN);
+//say
+bot.on("message", message => {
+    if (message.content === "$say") {
+
+    const sayMessage = args.join(" ");
+    message.delete().catch(O_o=>{}); 
+    message.channel.send(sayMessage);
+    
+}
+});
+bot.login(process.env.BOT_TOKEN);
