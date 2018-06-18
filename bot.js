@@ -3,10 +3,10 @@ const bot = new Discord.Client({disableEveryone: true});
 
 
 bot.on("ready", () => {
-        bot.user.setGame(`$help | Playing With ${bot.users.size} Users!`)
+        console.log(`${bot.user.username} has started! With ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} servers.`);
+        bot.user.setActivity(`$help | Playing With ${bot.channels.size} Servers!`);
     
-});
-    
+    });
         
 bot.on("guildCreate", guild => {
          bot.user.setGame(`$help | Playing With ${bot.channels.size} Users!`);
