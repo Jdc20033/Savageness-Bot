@@ -116,13 +116,13 @@ if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send
     
     
     let member = message.mentions.members.first();
-    if(!member)
+    if(member)
       return message.reply("You did not specify a user!");
-    if(!member.kickable) 
+    if(member.kickable) 
       return message.reply("I cannot kick this user! Do they have a higher role? Do I have kick permissions?");
    
     let reason = args.slice(1).join(' ');
-    if(!reason)
+    if(reason)
       return message.reply("Please indicate a reason for the kick!");
     
     await member.kick(reason)
