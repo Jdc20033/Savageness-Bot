@@ -112,7 +112,8 @@ bot.on("message", message => {
     if (message.content === "$kick") {
 if(!message.member.roles.some(r=>["Administrator", "Moderator"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
-      let args = messageArray.slice(1);
+        let messageArray = message.content.split(/\s+/g);
+        let args = messageArray.slice(1);
     // Let's first check if we have a member and if we can kick them!
     // message.mentions.members is a collection of people that have been mentioned, as GuildMembers.
     // We can also support getting the member by ID, which would be args[0]
