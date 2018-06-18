@@ -106,39 +106,15 @@ let embed2 = new Discord.RichEmbed()
               message.reply("Sent. Check your direct messages.");
 }
 });    
-//kick
-bot.on("message", async message => {
-    if (message.content === "$kick") {
-       if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the proper roles!");
-       let messageArray = message.content.split(/\s+/g);
-       let commands = messageArray[0];
-       let arguments = messageArray.slice(1); 
-    
-    let member = message.mentions.members.first();
-    if(!member)
-      return message.reply("You did not specify a user!");
-    if(!member.kickable) 
-      return message.reply("I cannot kick this user! Do they have a higher role? Do I have kick permissions?");
-    var args = Array.prototype.slice.call(arguments);
-    let reason = args.slice(1).join(' ');
-    if(!reason)
-      return message.reply("Please indicate a reason for the kick!");
-    
-    await member.kick(reason)
-      .catch(error => message.reply(`Sorry ${message.author} I couldn't kick that user. Reason: ${error}`));
-    message.reply(`${member.user.tag} has been kicked by ${message.author.tag}. Reason: ${reason}`);
 
-  }
-});
 //say
 bot.on("message", message => {
     if (message.content === "$say") {
-    const fs = require("fs");
-    const Discord = require("discord.js");
-    var args = Array.prototype.slice.call(arguments);
-     const sayMessage = args.join(" ");
+    const sayMessage = args.join(" ");
+    // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
     message.delete().catch(O_o=>{}); 
+    // And we get the bot to say the thing: 
     message.channel.send(sayMessage);
-    }
+  }
 });
 bot.login(process.env.BOT_TOKEN);
