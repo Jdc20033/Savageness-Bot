@@ -17,7 +17,7 @@ bot.on("message", async message => {
   // e.g. if we have the message "+say Is this the real life?" , we'll get the following:
   // command = say
   // args = ["Is", "this", "the", "real", "life?"]
-  const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+  const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
 });
 
@@ -128,7 +128,7 @@ let embed2 = new Discord.RichEmbed()
 });    
 
 //say
-bot.on("message", message => {
+bot.on("message", async message => {
     if (message.content === "$say") {
     const sayMessage = args.join(" ");
     // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
