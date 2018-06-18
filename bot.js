@@ -1,6 +1,8 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client({disableEveryone: true});
-   
+const botSettings = require('botsettings.json');   
+const prefix = botSettings.prefix;
+
 bot.on("ready", () => {
         console.log(`${bot.user.username} has started! With ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} servers.`);
         bot.user.setGame(`in ${bot.channels.size} servers! | $help`)
