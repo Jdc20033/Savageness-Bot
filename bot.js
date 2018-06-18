@@ -107,7 +107,7 @@ let embed2 = new Discord.RichEmbed()
 }
 });    
 //kick
-bot.on("message", "args", message => {
+bot.on("message", message => {
 
     if (message.content === "$kick") {
 if(!message.member.roles.some(r=>["Administrator", "Moderator"].includes(r.name)) )
