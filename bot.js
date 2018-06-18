@@ -61,7 +61,7 @@ message.channel.send(embed);
 }
 
 //avatar
-let msg = await message.channel.send("Loading avatar...")
+let message = await message.channel.send("Loading avatar...")
       let target = message.mentions.users.first() || message.author;
    
    
@@ -72,7 +72,7 @@ let msg = await message.channel.send("Loading avatar...")
       }
        ]});
 
-       msg.delete();
+       message.delete();
     }
 //roll
     var result = Math.floor((Math.random() * 100) + 1);
