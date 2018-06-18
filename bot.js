@@ -40,7 +40,7 @@ bot.on("message", message => {
 });
 //avatar
 bot.on("message", message => {
-    if (message.content === "$roll") {
+    if (message.content === "$avatar") {
 
       let msg = message.channel.send("Loading avatar...")
       let target = message.mentions.users.first() || message.author;
