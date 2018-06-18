@@ -53,7 +53,28 @@ bot.on("message", message => {
       }
        ]});
 
-       message.delete()
+       
     }
+});
+//ban
+bot.on("message", message => {
+    if (message.content === "$ban") {
+
+        if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the proper roles!");
+
+  let member = message.mentions.members.first();
+  if(!member)
+    return message.reply("You did not specify a user!");
+  if(!member.bannable) 
+    return message.reply("I cannot ban this user! Do they have a higher role? Do I have ban permissions?");
+
+  let reason = args.slice(1).join(' ');
+  if(!reason)
+    return message.reply("Please indicate a reason for the ban!");
+  
+  await member.ban(reason)
+    .catch(error => message.reply(`Sorry ${message.author} I couldn't ban the user. Reason: ${error}`));
+  message.reply(`${member.user.tag} has been banned by ${message.author.tag} Reason: ${reason}`);
+}
 });
 bot.login(process.env.BOT_TOKEN);
