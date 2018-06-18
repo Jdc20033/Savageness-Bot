@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client({disableEveryone: true});
-const fs = require("fs");
 
     bot.on("ready", () => {
         console.log(`${bot.user.username} has started! With ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} servers.`);
