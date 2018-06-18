@@ -42,7 +42,7 @@ bot.on("message", message => {
 bot.on("message", message => {
     if (message.content === "$avatar") {
 
-      let msg = message.channel.send("Loading avatar...")
+      let item = message.channel.send("Loading avatar...")
       let target = message.mentions.users.first() || message.author;
    
    
@@ -53,7 +53,7 @@ bot.on("message", message => {
       }
        ]});
 
-       message.delete("msg")
+       message.delete(item)
     }
 });
 bot.login(process.env.BOT_TOKEN);
