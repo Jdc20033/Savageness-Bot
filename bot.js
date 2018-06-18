@@ -22,8 +22,6 @@ const fs = require("fs");
 bot.on("message", async message => {
     if(message.author.bot) return;
     if(message.channel.type === "dm") return message.channel.send(`Hello! My prefix is "$"! Invite me to your server with the following link {https://discordapp.com/oauth2/authorize?client_id=458018248190066730&permissions=8&scope=bot}} Or join our server main! {https://discord.gg/5Du3jDt} Thanks!`);
-    let args = messageArray.slice(1);
-    let input = messageArray[1];
 });
 //roll
 bot.on("message", message => {
@@ -114,7 +112,7 @@ bot.on("message", "args", message => {
     if (message.content === "$kick") {
 if(!message.member.roles.some(r=>["Administrator", "Moderator"].includes(r.name)) )
       return message.reply("Sorry, you don't have permissions to use this!");
-    
+      let args = messageArray.slice(1);
     // Let's first check if we have a member and if we can kick them!
     // message.mentions.members is a collection of people that have been mentioned, as GuildMembers.
     // We can also support getting the member by ID, which would be args[0]
