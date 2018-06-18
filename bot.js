@@ -39,7 +39,7 @@ bot.on("message", message => {
 }  
 });
 //avatar
-let msg = await message.channel.send("Loading avatar...")
+      let msg = message.channel.send("Loading avatar...")
       let target = message.mentions.users.first() || message.author;
    
    
