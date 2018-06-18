@@ -57,7 +57,7 @@ bot.on("message", message => {
     }
 });
 //ban
-bot.on("message", message => {
+bot.on("message", async message => {
     if (message.content === "$ban") {
 
         if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the proper roles!");
@@ -72,7 +72,7 @@ bot.on("message", message => {
   if(!reason)
     return message.reply("Please indicate a reason for the ban!");
   
-  member.ban(reason)
+ await member.ban(reason)
     .catch(error => message.reply(`Sorry ${message.author} I couldn't ban the user. Reason: ${error}`));
   message.reply(`${member.user.tag} has been banned by ${message.author.tag} Reason: ${reason}`);
 }
