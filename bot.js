@@ -1,7 +1,8 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client({disableEveryone: true});
+const prefix = ('$');
 const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
-const command = args.shift().toLowerCase();
+
 
 bot.on("ready", () => {
         console.log(`${bot.user.username} has started! With ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} servers.`);
@@ -57,7 +58,8 @@ bot.on("message", message => {
     }
 });
 //ping
-if(command === "ping") {
+bot.on("message", message => {
+    if (message.content === "$ping") {
 
 const m = await message.channel.send("Ping?");
         m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`);
