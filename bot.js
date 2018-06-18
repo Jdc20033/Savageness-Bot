@@ -53,7 +53,7 @@ bot.on("message", message => {
       }
        ]});
 
-       msg.delete();
+       message.delete("msg")
     }
 });
 bot.login(process.env.BOT_TOKEN);
