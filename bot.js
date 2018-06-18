@@ -108,11 +108,12 @@ let embed2 = new Discord.RichEmbed()
 });    
 //kick
 bot.on("message", message => {
-
     if (message.content === "$kick") {
-let member = message.mentions.members.first();
-        // Kick
-        member.kick().then((member) => {
+        let messageArray = message.content.split(/\s+/g);
+        let args = let args = messageArray.slice(1);
+        let reason = args.slice(1).join(' ');
+        let member = message.mentions.members.first();
+        member.kick(reason).then((member) => {
             // Successmessage
             message.channel.send(":wave: " + member.displayName + " has been successfully kicked :point_right: ");
         }).catch(() => {
