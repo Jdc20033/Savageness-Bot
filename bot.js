@@ -109,11 +109,8 @@ let embed2 = new Discord.RichEmbed()
 //kick
 bot.on("message", message => {
     if (message.content === "$kick") {
-        let messageArray = message.content.split(/\s+/g);
-        let input = messageArray[1];
-        let reason = input(" ")
         let member = message.mentions.members.first();
-        member.kick(reason).then((member) => {
+        member.kick("No reason").then((member) => {
             // Successmessage
             message.channel.send(":wave: " + member.displayName + " has been successfully kicked :point_right: ");
         }).catch(() => {
