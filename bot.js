@@ -109,9 +109,8 @@ let embed2 = new Discord.RichEmbed()
 //kick
 bot.on("message", message => {
     if (message.content === "$kick") {
-        let messageArray = message.content.split(/\s+/g);
-        let args = let args = messageArray.slice(1);
-        let reason = args.slice(1).join(' ');
+        let input = let input = messageArray[1];
+        let reason = input(" ")
         let member = message.mentions.members.first();
         member.kick(reason).then((member) => {
             // Successmessage
