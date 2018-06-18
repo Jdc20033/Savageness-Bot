@@ -112,7 +112,7 @@ bot.on("message", async message => {
        if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the proper roles!");
        let messageArray = message.content.split(/\s+/g);
        let commands = messageArray[0];
-       let args = messageArray.slice(1); 
+       let arguments = messageArray.slice(1); 
     
     let member = message.mentions.members.first();
     if(!member)
@@ -120,7 +120,7 @@ bot.on("message", async message => {
     if(!member.kickable) 
       return message.reply("I cannot kick this user! Do they have a higher role? Do I have kick permissions?");
    
-    let reason = args.slice(1).join(' ');
+    let reason = arguments.slice(1).join(' ');
     if(!reason)
       return message.reply("Please indicate a reason for the kick!");
     
@@ -135,7 +135,7 @@ bot.on("message", message => {
     if (message.content === "$say") {
     const fs = require("fs");
     const Discord = require("discord.js");
-    const sayMessage = args.join(" ");
+    const sayMessage = arguments.join(" ");
     message.delete().catch(O_o=>{}); 
     message.channel.send(sayMessage);
     }
