@@ -115,6 +115,9 @@ bot.on("message", message => {
       return message.reply("Please mention a valid member of this server");
     if(!member.kickable) 
       return message.reply("I cannot kick this user! Do they have a higher role? Do I have kick permissions?");
+        let messageArray = message.content.split(/\s+/g);
+        let commands = messageArray[0];
+        let args = messageArray.slice(1);
         let reason = args.slice(1).join(' ');
     if(!reason) reason = "No reason provided";
         member.kick(reason)
@@ -125,7 +128,9 @@ bot.on("message", message => {
 //say
 bot.on("message", message => {
     if (message.content === "$say") {
-
+    let messageArray = message.content.split(/\s+/g);
+    let commands = messageArray[0];
+    let args = messageArray.slice(1);
     const sayMessage = args.join(" ");
     message.delete().catch(O_o=>{}); 
     message.channel.send(sayMessage);
