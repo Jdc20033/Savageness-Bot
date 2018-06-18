@@ -119,8 +119,8 @@ bot.on("message", async message => {
       return message.reply("You did not specify a user!");
     if(!member.kickable) 
       return message.reply("I cannot kick this user! Do they have a higher role? Do I have kick permissions?");
-   
-    let reason = arguments.slice(1).join(' ');
+    var args = Array.prototype.slice.call(arguments);
+    let reason = args.slice(1).join(' ');
     if(!reason)
       return message.reply("Please indicate a reason for the kick!");
     
@@ -135,7 +135,8 @@ bot.on("message", message => {
     if (message.content === "$say") {
     const fs = require("fs");
     const Discord = require("discord.js");
-    const sayMessage = arguments.join(" ");
+    var args = Array.prototype.slice.call(arguments);
+     const sayMessage = args.join(" ");
     message.delete().catch(O_o=>{}); 
     message.channel.send(sayMessage);
     }
