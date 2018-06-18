@@ -112,22 +112,28 @@ let embed2 = new Discord.RichEmbed()
 bot.on("message", message => {
 
     if (message.content === "$kick") {
-if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the proper roles!");
+if(!message.member.roles.some(r=>["Administrator", "Moderator"].includes(r.name)) )
+      return message.reply("Sorry, you don't have permissions to use this!");
     
-    
-    let member = message.mentions.members.first();
+    // Let's first check if we have a member and if we can kick them!
+    // message.mentions.members is a collection of people that have been mentioned, as GuildMembers.
+    // We can also support getting the member by ID, which would be args[0]
+    let member = message.mentions.members.first() || message.guild.members.get(args[0]);
     if(!member)
-      return message.reply("You did not specify a user!");
+      return message.reply("Please mention a valid member of this server");
     if(!member.kickable) 
       return message.reply("I cannot kick this user! Do they have a higher role? Do I have kick permissions?");
-   
-    let reason = args.slice(1).join(' ');
-    if(!reason)
-      return message.reply("Please indicate a reason for the kick!");
     
-     member.kick(reason)
-      .catch(error => message.reply(`Sorry ${message.author} I couldn't kick that user. Reason: ${error}`));
-    message.reply(`${member.user.tag} has been kicked by ${message.author.tag}. Reason: ${reason}`);
+    // slice(1) removes the first part, which here should be the user mention or ID
+    // join(' ') takes all the various parts to make it a single string.
+    let reason = args.slice(1).join(' ');
+    if(!reason) reason = "No reason provided";
+    
+    // Now, time for a swift kick in the nuts!
+    await member.kick(reason)
+      .catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
+    message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
+
   }
 });
  bot.login(process.env.BOT_TOKEN);
