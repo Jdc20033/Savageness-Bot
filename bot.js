@@ -135,8 +135,7 @@ bot.on('message', async message => {
 
      await toMute.addRole(role);
      message.channel.send("I have muted them!");
-});
-  return; 	 
+});	 
         }       
 	else if(command === 'unmute') {
      if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have manage messages!");
