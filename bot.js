@@ -68,7 +68,7 @@ bot.on('message', async message => {
  
     await member.kick(reason)
       .catch(error => message.reply(`Sorry ${message.author} I couldn't kick that user. Reason: ${error}`));
-    message.reply(`**${member.user.tag} was kicked**`);
+    message.reply(`**was kicked**`);
 
   }
 
