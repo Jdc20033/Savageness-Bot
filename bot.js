@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const { prefix, token } = require('./config.json');
 const bot = new Discord.Client({disableEveryone: true});
 
 
@@ -114,10 +115,4 @@ let embed2 = new Discord.RichEmbed()
 });    
 
 //say
-bot.on("message", async message => {
-   if (message.content === "$say") { {//Check if the message send starts with "say"
-    var newMessage = message.replace("say ", "");//Making a variable where "say " is removed
-    bot.sendMessage({to: channelID, message:newMessage})//Send the new variable.
-
-});
 bot.login(process.env.BOT_TOKEN);
