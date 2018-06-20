@@ -131,12 +131,11 @@ bot.on('message', async message => {
               ADD_REACTIONS: false
 });           
    
-  if(toMute.roles.has(role.id)) return message.channel.send("This user is already muted!");
+     if(toMute.roles.has(role.id)) return message.channel.send("This user is already muted!");
 
-  await toMute.addRole(role);
-  message.channel.send("I have muted them!");
-
-
+     await toMute.addRole(role);
+     message.channel.send("I have muted them!");
+});
   return; 	 
         }       
 	else if(command === 'unmute') {
