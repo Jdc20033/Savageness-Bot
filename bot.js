@@ -151,7 +151,7 @@ fs.writeFile("./mutes.json", JSON.stringify(bot.mutes, null, 4), err => {
     if(err) throw err;
     message.channel.send("I have muted this user!");       
 });
-}
+
         }     
         else if(command === 'unmute') {
         if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You do not have manage messages!");
