@@ -20,14 +20,20 @@ bot.on("guildDelete", guild => {
           console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
           bot.user.setGame(`in ${bot.guilds.size} servers! | $help`);
 });
+bot.on('message', async message => {
+	if (!message.content.startsWith(prefix) || message.author.bot) return;
+  
+	const args = message.content.slice(prefix.length).split(/ +/);
+	const command = args.shift().toLowerCase();
+	
 bot.setInterval(() => {
         for(let i in bot.mutes) {
-    let time = bot.mutes[i].time;
-    let guildId = bot.mutes[i].guild;
-    let guild = bot.guilds.get(guildId);
-    let member = guild.members.get(i);
-    let mutedRole = guild.roles.find(r => r.name === "Muted");
-    if(!mutedRole) continue;  
+        let time = bot.mutes[i].time;
+        let guildId = bot.mutes[i].guild;
+        let guild = bot.guilds.get(guildId);
+        let member = guild.members.get(i);
+        let mutedRole = guild.roles.find(r => r.name === "Muted");
+        if(!mutedRole) continue;  
         
 
         if(Date.now() > time) {
@@ -42,11 +48,6 @@ bot.setInterval(() => {
                 }
             }       
         }, 60000); 
-bot.on('message', async message => {
-	if (!message.content.startsWith(prefix) || message.author.bot) return;
-  
-	const args = message.content.slice(prefix.length).split(/ +/);
-	const command = args.shift().toLowerCase();
 	
 	if (command === 'ping') {
 		const m = await message.channel.send("Ping?");
