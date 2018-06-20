@@ -132,7 +132,6 @@ bot.on('message', async message => {
                 }
             }       
         }, 60000)
-    }); 
 	if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the proper roles!");
   
               let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
