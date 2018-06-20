@@ -146,7 +146,7 @@ bot.on('message', async message => {
 
 await toMute.addRole(role);
 
-fs.writeFile('mutes.json', JSON.stringify(bot.mutes), err => {
+fs.writeFile ("mutes.json", JSON.stringify(bot.mutes), err => {
     if(err) throw err;
     message.channel.send("I have muted this user!");       
 });
