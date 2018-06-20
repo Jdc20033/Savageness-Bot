@@ -54,14 +54,32 @@ bot.on('message', async message => {
 		message.channel.send(`First argument: ${args[0]}`);
 	}
 	else if (command === 'kick') {
-		if (!message.mentions.users.size) {
-			return message.reply('you need to tag a user in order to kick them!');
-		}
+		// This command must be limited to mods and admins. In this example we just hardcode the role names.
+    // Please read on Array.some() to understand this bit: 
+    // https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/some?
+    if(!message.member.roles.some(r=>["Administrator", "Moderator"].includes(r.name)) )
+      return message.reply("Sorry, you don't have permissions to use this!");
+    
+    // Let's first check if we have a member and if we can kick them!
+    // message.mentions.members is a collection of people that have been mentioned, as GuildMembers.
+    // We can also support getting the member by ID, which would be args[0]
+    let member = message.mentions.members.first() || message.guild.members.get(args[0]);
+    if(!member)
+      return message.reply("Please mention a valid member of this server");
+    if(!member.kickable) 
+      return message.reply("I cannot kick this user! Do they have a higher role? Do I have kick permissions?");
+    
+    // slice(1) removes the first part, which here should be the user mention or ID
+    // join(' ') takes all the various parts to make it a single string.
+    let reason = args.slice(1).join(' ');
+    if(!reason) reason = "No reason provided";
+    
+    // Now, time for a swift kick in the nuts!
+    await member.kick(reason)
+      .catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
+    message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
 
-		const taggedUser = message.mentions.users.first();
-
-		message.channel.send(`You wanted to kick: ${taggedUser.username}`);
-	}
+  }
 	else if (command === 'avatar') {
 		if (!message.mentions.users.size) {
 			return message.channel.send(`Your avatar: ${message.author.displayAvatarURL}`);
@@ -73,7 +91,7 @@ bot.on('message', async message => {
 
 		message.channel.send(avatarList);
 	}
-	else if (command === 'prune') {
+	else if (command === 'purge') {
 		const amount = parseInt(args[0]) + 1;
 
 		if (isNaN(amount)) {
@@ -85,7 +103,7 @@ bot.on('message', async message => {
 
 		message.channel.bulkDelete(amount, true).catch(err => {
 			console.error(err);
-			message.channel.send('there was an error trying to prune messages in this channel!');
+			message.channel.send('there was an error trying to purge messages in this channel!');
 		});
 	}
 });
