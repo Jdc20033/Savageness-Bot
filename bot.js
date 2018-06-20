@@ -21,10 +21,6 @@ bot.on("guildDelete", guild => {
           bot.user.setGame(`in ${bot.guilds.size} servers! | $help`);
 });
 
-bot.on("message", async message => {
-if (message.channel.type === "dm") return message.channel.send(`Hello! My prefix is "$"! Invite me to your server with the following link { https://discordapp.com/api/oauth2/authorize?client_id=458029145700433924&permissions=470281463&scope=bot } Thanks!`);
-});
-
 bot.on('message', async message => {
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
   
