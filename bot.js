@@ -53,18 +53,8 @@ bot.on('message', async message => {
 		else
 		message.channel.send(`Server name: ${message.guild.name}\nServer icon: ${message.guild.iconURL}\nTotal members: ${message.guild.memberCount}`);
 	}				
-	else if (command === 'user-info') {
+	else if (command === 'userinfo') {
 		message.channel.send(`Your username: ${message.author.username}\nYour ID: ${message.author.id}`);
-	}
-	else if (command === 'info') {
-		if (!args.length) {
-			return message.channel.send(`You didn't provide any arguments, ${message.author}!`);
-		}
-		else if (args[0] === 'foo') {
-			return message.channel.send('bar');
-		}
-
-		message.channel.send(`First argument: ${args[0]}`);
 	}
 	else if (command === 'kick') {
     if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the proper roles!");
@@ -152,9 +142,10 @@ let embed2 = new Discord.RichEmbed()
               .addField("**Admins only.**", "Commands For Admins Are Below.")
               .addField("1. **__$kick__**", "Kicks member from server. <$kick @ >")
               .addField("2. ** __$ban__**", "Bans a member from server. <$ban @ >")
-         //     .addField("3. **__$mute__**", "Mutes a member. <$mute @ >. Or Mutes a member for amount of mins entered. <$mute <amount of mins>>")
-         //     .addField("4. **__$unmute__**", "Unmutes a member. <$unmute @ >")          
-          //    .addField("5. **__$announcements__**", "Create a channel named announcements then enter <$announce <message here>.")
+         //   .addField("3. **__$mute__**", "Mutes a member. <$mute @ >. Or Mutes a member for amount of mins entered. <$mute <amount of mins>>")
+         //   .addField("4. **__$unmute__**", "Unmutes a member. <$unmute @ >")          
+          //  .addField("5. **__$announcements__**", "Create a channel named announcements then enter <$announce <message here>.")
+              .addField("6. **__$purge__**", "Wipes up to 100 messages that are within 14 days old. <$purge 10>") 
               message.author.send(embed);
               message.author.send(embed2);
               message.reply("Sent. Check your direct messages.");
