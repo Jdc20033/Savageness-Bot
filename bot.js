@@ -111,7 +111,7 @@ bot.on('message', async message => {
      if(command === 'mute') {
      if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the correct roles!");
 
-     let toMute = message.guild.member(mentions.users.first()) || message.guild.members.get(args[0]);
+     let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
      if(!toMute) return message.channel.send("You did not mention a user!");
     
      if(toMute.id === message.author.id) return message.channel.send("You cannot mute youself!");
