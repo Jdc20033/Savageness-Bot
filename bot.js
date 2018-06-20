@@ -20,7 +20,7 @@ bot.on('message', async message => {
 		message.channel.send('Boop.');
 	}
 	else if (command === 'server') {
-		message.channel.send(`Server name: ${message.guild.name}\nServer icon: ${message.guild.icon}\nTotal members: ${message.guild.memberCount}`);
+		message.channel.send(`Server name: ${message.guild.name}\nServer icon: ${message.guild.iconURL}\nTotal members: ${message.guild.memberCount}`);
 	}				
 	else if (command === 'user-info') {
 		message.channel.send(`Your username: ${message.author.username}\nYour ID: ${message.author.id}`);
