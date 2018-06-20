@@ -10,19 +10,19 @@ bot.on("message", async message => {
 
 bot.on("ready", () => {
         console.log(`${bot.user.username} has started! With ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} servers.`);
-        bot.user.setGame(`in ${bot.channels.size} servers! | $help`)
+        bot.user.setGame(`in ${bot.guilds.size} servers! | $help`)
     
     });
     
         
         bot.on("guildCreate", guild => {
             console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
-            bot.user.setGame(`in ${bot.channels.size} servers! | $help`);
+            bot.user.setGame(`in ${bot.guilds.size} servers! | $help`);
           });
          
           bot.on("guildDelete", guild => {
             console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
-            bot.user.setGame(`in ${bot.channels.size} servers! | $help`);
+            bot.user.setGame(`in ${bot.guilds.size} servers! | $help`);
           });
 
 bot.on("message", async message => {
@@ -115,15 +115,9 @@ let embed2 = new Discord.RichEmbed()
 
 //say
 bot.on("message", async message => {
-    if (message.content === "$say") {
-    const prefix = ("$");
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
-    const command = args.shift().toLowerCase();
-    const sayMessage = args.join(" ");
-    // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
-    message.delete().catch(O_o=>{}); 
-    // And we get the bot to say the thing: 
-    message.channel.send(sayMessage);
-  }
+   if (message.startsWith("$say") === true) {//Check if the message send starts with "say"
+    var newMessage = message.replace("say ", "");//Making a variable where "say " is removed
+    bot.sendMessage({to: channelID, message:newMessage})//Send the new variable.
+}
 });
 bot.login(process.env.BOT_TOKEN);
