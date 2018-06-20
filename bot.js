@@ -24,7 +24,7 @@ bot.on('message', async message => {
   
 	const args = message.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
-	const fse = require('fs-extra');
+	const fs = require('fs');
         bot.mutes = require("./mutes.json");
 	
 	if (command === 'ping') {
