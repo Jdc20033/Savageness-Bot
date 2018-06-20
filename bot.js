@@ -1,7 +1,6 @@
 const Discord = require('discord.js');
 const { prefix } = require('./config.json');
 const bot = new Discord.Client();
-npm install --save fs-extra
 
 bot.on("ready", () => {
         console.log(`${bot.user.username} has started! With ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} servers.`);
@@ -24,7 +23,7 @@ bot.on('message', async message => {
   
 	const args = message.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
-	const fse = require('fs-extra');
+	const fs = require('fs');
         bot.mutes = require("./mutes.json");
 	
 	if (command === 'ping') {
@@ -147,7 +146,7 @@ bot.on('message', async message => {
 
 await toMute.addRole(role);
 
-fse.outputFile('./mutes.json', JSON.stringify(bot.mutes, null, 4), err => {
+fs.writeFile('mutes.json', JSON.stringify(bot.mutes), err => {
     if(err) throw err;
     message.channel.send("I have muted this user!");       
 });
