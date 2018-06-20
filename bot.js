@@ -161,10 +161,7 @@ bot.on('message', async message => {
           }
           if(toMute.roles.has(role.id)) return message.channel.send("This user is already muted!");
        
-        bot.mutes[toMute.id] = {
-            guild: message.guild.id,
-            time: Date.now() + parseInt(args[1]) * 1000
-        }
+        
 
         await toMute.addRole(role);  
     
