@@ -24,6 +24,8 @@ bot.on('message', async message => {
   
 	const args = message.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
+	const fs = module.require("fs");
+        bot.mutes = require("./mutes.json");
 	
 	if (command === 'ping') {
 		const m = await message.channel.send("Ping?");
@@ -138,11 +140,18 @@ bot.on('message', async message => {
    
   if(toMute.roles.has(role.id)) return message.channel.send("This user is already muted!");
 
-  await toMute.addRole(role);
-  message.channel.send("I have muted them!");
+  bot.mutes[toMute.id] = {
+    guild: message.guild.id,
+    time: Date.now() + parseInt(args[1]) * 1000
+}
 
-  return;
+await toMute.addRole(role);
 
+fs.writeFile("./mutes.json", JSON.stringify(bot.mutes, null, 4), err => {
+    if(err) throw err;
+    message.channel.send("I have muted this user!");       
+});
+}
         }     
         else if(command === 'unmute') {
         if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You do not have manage messages!");
