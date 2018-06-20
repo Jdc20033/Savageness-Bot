@@ -141,7 +141,8 @@ if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send
         bot.mutes[toMute.id] = {
             guild: message.guild.id,
             time: Date.now() + parseInt(args[1]) * 1000
-        }
+	});
+	}
 	
 	
 	
