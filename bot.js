@@ -117,7 +117,7 @@ bot.on('message', async message => {
      if(toMute.id === message.author.id) return message.channel.send("You cannot mute youself!");
      if(toMute.highestRole.position >= message.member.highestRole.position) return message.channel.send("You cannot mute someone with a equal to or higher role than you!");
 
-     let role = message.guild.roles.find(r => rname === "Muted");
+     let role = message.guild.roles.find(r => r.name === "Muted");
      if(!role) {
          try {
       role = await message.guild.createRole({
