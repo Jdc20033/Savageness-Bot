@@ -127,10 +127,7 @@ bot.on('message', async message => {
                  
                      fs.writeFile("./mutes.json", JSON.stringify(bot.mutes), err => {
                               if (err) throw err;
-                   });
-                }
-            }       
-        }, 60000); 
+                   
 		
 		if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the proper roles!");
                
@@ -161,7 +158,12 @@ bot.on('message', async message => {
           }
           if(toMute.roles.has(role.id)) return message.channel.send("This user is already muted!");
        
+        bot.mutes[toMute.id] = {
+ 
+           guild: message.guild.id,
         
+    time: Date.now() + parseInt(args[1]) * 1000
+        }
 
         await toMute.addRole(role);  
     
@@ -169,6 +171,10 @@ bot.on('message', async message => {
             if(err) throw err;
             message.channel.send(`Muted ${toMute.user.tag}.` );
     });
+                }
+            }       
+        }, 60000)
+	});
 }
 	
 	
