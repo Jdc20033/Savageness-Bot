@@ -20,7 +20,29 @@ bot.on("guildDelete", guild => {
           console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
           bot.user.setGame(`in ${bot.guilds.size} servers! | $help`);
 });
+bot.setInterval(() => {
+        for(let i in bot.mutes) {
+    let time = bot.mutes[i].time;
+    let guildId = bot.mutes[i].guild;
+    let guild = bot.guilds.get(guildId);
+    let member = guild.members.get(i);
+    let mutedRole = guild.roles.find(r => r.name === "Muted");
+    if(!mutedRole) continue;  
+        
 
+        if(Date.now() > time) {
+        
+        member.removeRole(mutedRole);
+        delete bot.mutes[i];
+       
+                 
+            fs.writeFile("./mutes.json", JSON.stringify(bot.mutes), err => {
+                     if (err) throw err;
+                   });
+                }
+            }       
+        }, 60000)
+    }); 
 bot.on('message', async message => {
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
   
