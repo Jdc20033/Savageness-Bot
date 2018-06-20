@@ -140,7 +140,7 @@ bot.on('message', async message => {
   return;
 
  });
-	 }	 
+	 	 
 	else if(command === 'unmute') {
      if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have manage messages!");
 
