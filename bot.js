@@ -148,7 +148,7 @@ bot.on('message', async message => {
 	else if(command === 'unmute') {
      if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have manage messages!");
 
-     let toMute = message.guild.member(mentions.users.first()) || message.guild.members.get(args[0]);
+     let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
      if(!toMute) return message.channel.send("You did not mention a user!");
     
      let role = message.guild.roles.find(r => rname === "Muted");
