@@ -31,7 +31,7 @@ bot.on('message', async message => {
 		const m = await message.channel.send("Ping?");
         m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`);
 	}
-	else if (command === 'beep') {
+	else if (command === 'ban') {
 		if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the proper roles!");
 
                 let member = message.mentions.members.first();
@@ -45,7 +45,7 @@ bot.on('message', async message => {
 
                 await member.ban(reason)
                 .catch(error => message.reply(`Sorry ${message.author} I couldn't ban the user. Reason: ${error}`));
-                message.channel.send(`**${member.user.tag} was kicked!`);
+                message.channel.send(`**${member.user.tag} was banned!**`);
 }
 	else if (command === 'server') {
 		if (message.guild.iconURL === null) 
@@ -111,5 +111,10 @@ bot.on('message', async message => {
 			message.channel.send('there was an error trying to purge messages in this channel!');
 		});
 	}
+        else if if (command === "say") {
+    const sayMessage = args.join(" ");
+    message.delete().catch(O_o=>{}); 
+    message.channel.send(sayMessage);
+  }
 });
 bot.login(process.env.BOT_TOKEN);
