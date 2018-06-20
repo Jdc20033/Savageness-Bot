@@ -160,7 +160,6 @@ bot.on('message', async message => {
 
      return;
 }
-});
 	}
 	else if (command === "help") {
 	       let embed = new Discord.RichEmbed()
