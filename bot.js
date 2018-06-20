@@ -11,10 +11,10 @@ client.on('message', message => {
 	if (command === 'ping') {
 		message.channel.send(`pong`);
       }
-	})
+	}
 
 	else if (command === 'server') {
-		message.channel.send(`Server name: ${message.guild.name}\nTotal members: ${message.guild.memberCount}\nServer Picture: ${message.guild.icon}`);
+		message.channel.send(`Server name: ${message.guild.name}\nTotal members: ${message.guild.memberCount}`);
 	}
 	else if (command === 'user-info') {
 		message.channel.send(`Your username: ${message.author.username}\nYour ID: ${message.author.id}`);
