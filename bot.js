@@ -117,7 +117,7 @@ bot.on('message', async message => {
     message.channel.send(sayMessage);
         }
         else if (command === "invite") {
-		message.channel.send("Here's my invite! https://discordapp.com/api/oauth2/authorize?client_id=458029145700433924&permissions=474344695&scope=bot");
+		message.reply("Here's my invite! https://discordapp.com/api/oauth2/authorize?client_id=458029145700433924&permissions=474344695&scope=bot");
 	}
 	else if (command === "help") {
 	       let embed = new Discord.RichEmbed()
