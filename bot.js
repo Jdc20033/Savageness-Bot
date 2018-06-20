@@ -136,7 +136,7 @@ if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send
     if(toMute.roles.has(role.id)) return message.channel.send('This user is already muted!');
 
     await(toMute.addRole(role));
-    message.channel.send("Muted ${toMute.user.tag}.");
+    message.channel.send('Muted ${toMute.user.tag}.');
 
     return;
   }
