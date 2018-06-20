@@ -32,8 +32,21 @@ bot.on('message', async message => {
         m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`);
 	}
 	else if (command === 'beep') {
-		message.channel.send('Boop.');
-	}
+		if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the proper roles!");
+
+                let member = message.mentions.members.first();
+                if(!member)
+                return message.reply("You did not specify a user!");
+                if(!member.bannable) 
+                return message.reply("I cannot ban this user! Do they have a higher role? Do I have ban permissions?");
+
+                let reason = args.slice(1).join(' ');
+                if(!reason)
+
+                await member.ban(reason)
+                .catch(error => message.reply(`Sorry ${message.author} I couldn't ban the user. Reason: ${error}`));
+                message.channel.send(`**${member.user.tag} was kicked!`);
+}
 	else if (command === 'server') {
 		if (message.guild.iconURL === null) 
 		{ message.channel.send(`Server name: ${message.guild.name}\nServer icon: No server icon.\nTotal members: ${message.guild.memberCount}`); }
@@ -68,7 +81,7 @@ bot.on('message', async message => {
  
     await member.kick(reason)
       .catch(error => message.reply(`Sorry ${message.author} I couldn't kick that user. Reason: ${error}`));
-    message.channel.send(`**${member.user.tag} was kicked**`);
+    message.channel.send(`**${member.user.tag} was kicked!**`);
 
   }
 
