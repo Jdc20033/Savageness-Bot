@@ -41,8 +41,7 @@ bot.setInterval(() => {
                    });
                 }
             }       
-        }, 60000)
-    ); 
+        }, 60000); 
 bot.on('message', async message => {
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
   
