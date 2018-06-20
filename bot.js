@@ -65,11 +65,10 @@ bot.on('message', async message => {
    
     let reason = args.slice(1).join(' ');
     if(!reason)
-      return message.reply("Please indicate a reason for the kick!");
-    
+ 
     await member.kick(reason)
       .catch(error => message.reply(`Sorry ${message.author} I couldn't kick that user. Reason: ${error}`));
-    message.reply(`${member.user.tag} has been kicked by ${message.author.tag}. Reason: ${reason}`);
+    message.reply(`**${member.user.tag} was kicked**`);
 
   }
 
