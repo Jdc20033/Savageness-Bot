@@ -26,28 +26,6 @@ bot.on('message', async message => {
 	const args = message.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
 	
-bot.setInterval(() => {
-        for(let i in bot.mutes) {
-        let time = bot.mutes[i].time;
-        let guildId = bot.mutes[i].guild;
-        let guild = bot.guilds.get(guildId);
-        let member = guild.members.get(i);
-        let mutedRole = guild.roles.find(r => r.name === "Muted");
-        if(!mutedRole) continue;  
-        
-
-        if(Date.now() > time) {
-        
-        member.removeRole(mutedRole);
-        delete bot.mutes[i];
-       
-                 
-            fs.writeFile("./mutes.json", JSON.stringify(bot.mutes), err => {
-                     if (err) throw err;
-                   });
-                }
-            }       
-        }, 60000); 
 	
 	if (command === 'ping') {
 		const m = await message.channel.send("Ping?");
@@ -132,8 +110,31 @@ bot.setInterval(() => {
 		message.reply("Here's my invite! https://discordapp.com/api/oauth2/authorize?client_id=458029145700433924&permissions=474344695&scope=bot");
 	}
 	else if (command === "mute") {
-                if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the proper roles!");
-  
+                bot.setInterval(() => {
+                     for(let i in bot.mutes) {
+                     let time = bot.mutes[i].time;
+                     let guildId = bot.mutes[i].guild;
+                     let guild = bot.guilds.get(guildId);
+                     let member = guild.members.get(i);
+                     let mutedRole = guild.roles.find(r => r.name === "Muted");
+                     if(!mutedRole) continue;  
+        
+
+                     if(Date.now() > time) {
+        
+                     member.removeRole(mutedRole);
+                     delete bot.mutes[i];
+       
+                 
+                     fs.writeFile("./mutes.json", JSON.stringify(bot.mutes), err => {
+                              if (err) throw err;
+                   });
+                }
+            }       
+        }, 60000); 
+		
+		if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the proper roles!");
+               
               let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
               if(!toMute) return message.channel.send("You did not specify a user!");
             
