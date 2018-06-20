@@ -130,7 +130,7 @@ bot.on('message', async message => {
               SEND_MESSAGES: false,
               ADD_REACTIONS: false
 });           
-   } catch(e) {
+   )} catch(e) {
          console.log(e.stack);
      }
 }     
