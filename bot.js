@@ -20,9 +20,12 @@ bot.on('message', async message => {
 		message.channel.send('Boop.');
 	}
 	else if (command === 'server') {
-		message.channel.send(`Server name: ${message.guild.name}\nServer picture: ${message.guild.icon}\nTotal members: ${message.guild.memberCount}`);
-	     if (.icon === "null") { message.channel.send('No profile picture'); }
+		message.channel.send(`Server name: ${message.guild.name}\nTotal members: ${message.guild.memberCount}`);
 	}
+	else if (command === 'server-picture') {
+		message.channel.send('Server picture: ${message.guild.icon');
+	     if (guild.icon === "null") { message.channel.send('No server picture'); }
+	}				
 	else if (command === 'user-info') {
 		message.channel.send(`Your username: ${message.author.username}\nYour ID: ${message.author.id}`);
 	}
