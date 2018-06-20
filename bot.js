@@ -21,6 +21,7 @@ bot.on('message', async message => {
 	}
 	else if (command === 'server') {
 		message.channel.send(`Server name: ${message.guild.name}\nServer picture: ${message.guild.icon}\nTotal members: ${message.guild.memberCount}`);
+	     if (.icon === "null") { message.channel.send('No profile picture'); }
 	}
 	else if (command === 'user-info') {
 		message.channel.send(`Your username: ${message.author.username}\nYour ID: ${message.author.id}`);
