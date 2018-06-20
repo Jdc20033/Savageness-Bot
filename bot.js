@@ -130,10 +130,6 @@ bot.on('message', async message => {
               SEND_MESSAGES: false,
               ADD_REACTIONS: false
 });           
-   )} catch(e) {
-         console.log(e.stack);
-     }
-}     
    
   if(toMute.roles.has(role.id)) return message.channel.send("This user is already muted!");
 
