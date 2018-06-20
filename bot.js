@@ -12,7 +12,7 @@ client.on('message', message => {
 		const m = message.channel.send("Ping?");
         m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`);
       }
-	}
+	});
 
 	else if (command === 'server') {
 		message.channel.send(`Server name: ${message.guild.name}\nTotal members: ${message.guild.memberCount}\nServer Picture: ${message.guild.icon}`);
