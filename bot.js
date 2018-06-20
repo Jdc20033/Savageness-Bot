@@ -108,6 +108,7 @@ bot.on('message', async message => {
 		message.reply("Here's my invite! https://discordapp.com/api/oauth2/authorize?client_id=458029145700433924&permissions=474344695&scope=bot");
 	}
 	else if(command === 'mute') {
+     if(command === 'mute') {
      if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the correct roles!");
 
      let toMute = message.guild.member(mentions.users.first()) || message.guild.members.get(args[0]);
@@ -121,7 +122,7 @@ bot.on('message', async message => {
          try {
       role = await message.guild.createRole({
       name: "Muted", 
-      color: "#000000",
+      color: "#000000
       permissions: []
 });
   
@@ -130,13 +131,19 @@ bot.on('message', async message => {
               SEND_MESSAGES: false,
               ADD_REACTIONS: false
 });           
+   } catch(e) {
+         console.log(e.stack);
+     }
+}     
    
-     if(toMute.roles.has(role.id)) return message.channel.send("This user is already muted!");
+  if(toMute.roles.has(role.id)) return message.channel.send("This user is already muted!");
 
-     await toMute.addRole(role);
-     message.channel.send("I have muted them!");
-});	 
-        }       
+  await toMute.addRole(role);
+  message.channel.send("I have muted them!");
+
+  return;
+
+        }      
 	else if(command === 'unmute') {
      if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have manage messages!");
 
