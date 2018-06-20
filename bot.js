@@ -6,15 +6,14 @@ bot.on('ready', () => {
 	console.log('Ready!');
 });
 
-bot.on('message', message => {
+bot.on('message', async message => {
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 
 	const args = message.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
-        bot.commands = new Discord.Collection();
 	
 	if (command === 'ping') {
-		const m = message.channel.send("Ping?");
+		const m = await message.channel.send("Ping?");
         m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`);
 	}
 	else if (command === 'beep') {
