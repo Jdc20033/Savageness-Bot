@@ -2,9 +2,8 @@ const Discord = require('discord.js');
 const { prefix } = require('./config.json');
 const bot = new Discord.Client();
 
-bot.on('ready', () => {
-	console.log('Ready!');
-});
+
+
 bot.on("ready", () => {
         console.log(`${bot.user.username} has started! With ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} servers.`);
         bot.user.setGame(`in ${bot.guilds.size} servers! | $help`);
@@ -24,7 +23,7 @@ bot.on("guildDelete", guild => {
 
 bot.on('message', async message => {
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
-
+        if(message.channel.type === "dm") return message.channel.send(`Hello! My prefix is "$"! Invite me to your server with the following link { https://discordapp.com/api/oauth2/authorize?client_id=458029145700433924&permissions=470281463&scope=bot } Thanks!`);
 	const args = message.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
 	
@@ -90,6 +89,4 @@ bot.on('message', async message => {
 		});
 	}
 });
-
-
 bot.login(process.env.BOT_TOKEN);
