@@ -111,7 +111,7 @@ bot.on('message', async message => {
 			message.channel.send('there was an error trying to purge messages in this channel!');
 		});
 	}
-        else if if (command === "say") {
+        else if (command === "say") {
     const sayMessage = args.join(" ");
     message.delete().catch(O_o=>{}); 
     message.channel.send(sayMessage);
