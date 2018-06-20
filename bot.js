@@ -11,7 +11,8 @@ bot.on('message', message => {
 
 	const args = message.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
-
+        bot.commands = new Discord.Collection();
+	
 	if (command === 'ping') {
 		const m = message.channel.send("Ping?");
         m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`);
