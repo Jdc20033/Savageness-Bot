@@ -145,7 +145,7 @@ bot.on('message', async message => {
   return;
 
         }      
-	else if(command === 'unmute') {
+	if(command === 'unmute') {
      if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have manage messages!");
 
      let toMute = message.guild.member(mentions.users.first()) || message.guild.members.get(args[0]);
@@ -158,8 +158,9 @@ bot.on('message', async message => {
      await toMute.removeRole(role);
      message.channel.send("I have unmuted them!");
 
-
      return;
+}
+});
 	}
 	else if (command === "help") {
 	       let embed = new Discord.RichEmbed()
@@ -204,6 +205,6 @@ let embed2 = new Discord.RichEmbed()
 
 
 }
-  };                     
+});                     
 
 bot.login(process.env.BOT_TOKEN);
