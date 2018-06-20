@@ -115,7 +115,7 @@ let embed2 = new Discord.RichEmbed()
 
 //say
 bot.on("message", async message => {
-   if (message.startsWith("$say") === true) {//Check if the message send starts with "say"
+   if (message.content === "$say") { {//Check if the message send starts with "say"
     var newMessage = message.replace("say ", "");//Making a variable where "say " is removed
     bot.sendMessage({to: channelID, message:newMessage})//Send the new variable.
 }
