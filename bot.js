@@ -116,7 +116,10 @@ bot.on('message', async message => {
     message.delete().catch(O_o=>{}); 
     message.channel.send(sayMessage);
         }
-       else if (command === "help") {
+        else if (command === "invite") {
+		message.channel.send("Here's my invite! https://discordapp.com/api/oauth2/authorize?client_id=458029145700433924&permissions=474344695&scope=bot");
+	}
+	else if (command === "help") {
 	       let embed = new Discord.RichEmbed()
               .setAuthor("ØneŁife")
               .setDescription("This is the bot creator's info!")
