@@ -137,10 +137,8 @@ bot.on('message', async message => {
   message.channel.send("I have muted them!");
 
 
-  return;
-
- });
-	 	 
+  return; 	 
+        }       
 	else if(command === 'unmute') {
      if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have manage messages!");
 
@@ -156,7 +154,6 @@ bot.on('message', async message => {
 
 
      return;
-	
 	}
 	else if (command === "help") {
 	       let embed = new Discord.RichEmbed()
