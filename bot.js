@@ -24,7 +24,7 @@ bot.on('message', async message => {
   
 	const args = message.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
-	
+	const fs = require("fs");
 	
 	if (command === 'ping') {
 		const m = await message.channel.send("Ping?");
@@ -108,8 +108,31 @@ bot.on('message', async message => {
         else if (command === "invite") {
 		message.reply("Here's my invite! https://discordapp.com/api/oauth2/authorize?client_id=458029145700433924&permissions=474344695&scope=bot");
 	}
-	else if (command === "mute") {
-if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the proper roles!");
+	else if (command === "mute") {  
+		bot.setInterval(() => {
+                     for(let i in bot.mutes) {
+                     let time = bot.mutes[i].time;
+                     let guildId = bot.mutes[i].guild;
+                     let guild = bot.guilds.get(guildId);
+                     let member = guild.members.get(i);
+                     let mutedRole = guild.roles.find(r => r.name === "Muted");
+                     if(!mutedRole) continue;  
+        
+
+                     if(Date.now() > time) {
+        
+                     member.removeRole(mutedRole);
+                     delete bot.mutes[i];
+       
+                 
+                     fs.writeFile("./mutes.json", JSON.stringify(bot.mutes), err => {
+                              if (err) throw err;
+                   });
+                }
+            }       
+        }, 60000); 
+		
+		if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the proper roles!");
                
               let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
               if(!toMute) return message.channel.send("You did not specify a user!");
@@ -141,8 +164,15 @@ if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send
         bot.mutes[toMute.id] = {
             guild: message.guild.id,
             time: Date.now() + parseInt(args[1]) * 1000
-	});
-	}
+        }
+
+        await toMute.addRole(role);  
+    
+        fs.writeFile("./mutes.json", JSON.stringify(bot.mutes, null, 4), err => {
+            if(err) throw err;
+            message.channel.send(`Muted ${toMute.user.tag}.` );
+    });
+}
 	
 	
 	
