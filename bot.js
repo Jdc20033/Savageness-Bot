@@ -23,7 +23,7 @@ bot.on("guildDelete", guild => {
 
 bot.on('message', async message => {
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
-        if(message.channel.type === "dm") return message.channel.send(`Hello! My prefix is "$"! Invite me to your server with the following link { https://discordapp.com/api/oauth2/authorize?client_id=458029145700433924&permissions=470281463&scope=bot } Thanks!`);
+        if (message.channel.type === "dm") return message.channel.send(`Hello! My prefix is "$"! Invite me to your server with the following link { https://discordapp.com/api/oauth2/authorize?client_id=458029145700433924&permissions=470281463&scope=bot } Thanks!`);
 	const args = message.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
 	
