@@ -158,6 +158,6 @@ let embed2 = new Discord.RichEmbed()
 
 
 }
-                      
+  });                     
 
 bot.login(process.env.BOT_TOKEN);
