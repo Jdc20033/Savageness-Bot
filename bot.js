@@ -24,7 +24,7 @@ bot.on('message', async message => {
 	const args = message.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
 	const fs = require('fs');
-        bot.mutes = require("./mutes.js");
+        bot.mutes = require("./mutes.json");
 	
 	if (command === 'ping') {
 		const m = await message.channel.send("Ping?");
@@ -146,7 +146,7 @@ bot.on('message', async message => {
 
 await toMute.addRole(role);
 
-fs.appendFile("./mutes.js",(bot.mutes), err => {
+fs.appendFile("./mutes.json",(bot.mutes), err => {
     if(err) throw err;
     message.channel.send("I have muted this user!");       
 });
