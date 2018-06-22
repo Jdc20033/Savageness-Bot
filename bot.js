@@ -264,12 +264,12 @@ let embed2 = new Discord.RichEmbed()
        }
        else if (command === "prefix") {
        if(!message.member.hasPermissions("MANAGE_SERVER")) return message.reply("You need a role with manage server permissions!");
-if(!args[0] || args[0 == "help"]) return message.reply("Usage: $prefix <desired prefix here>");
+       if(!args[0] || args[0 == "help"]) return message.reply("Usage: $prefix <desired prefix here>");
 
-let prefixes = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
+       let prefixes = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
 
-prefixes[message.gguild.id = {
-  prefixes: args[0]
+       prefixes[message.guild.id = {
+       prefixes: args[0]
 }
 
 fs.writeFile("./prefixes.json", JSON.stringify(prefixes), (err) => {
