@@ -49,6 +49,7 @@ bot.setInterval(() => {
             }       
         }, 60000);
  
+{
 let prefixes = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
 
 if(!prefixes[message.guild.id]){
