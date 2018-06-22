@@ -50,7 +50,7 @@ bot.setInterval(() => {
         }, 60000);
  
 module.exports.run = async(bot, message, args) => {
-let prefixes = JSON.parse(fs.writeFile('./storages/guildConf.json', JSON.stringify(guildConf, null, 2));
+let prefixes = JSON.parse(fs.writeFile('./storages/guildConf.json', JSON.stringify(guildConf, null, 2)));
 
 if(!prefixes[message.guild.id]){
   prefixes[message.guild.id] = {
