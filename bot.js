@@ -80,7 +80,7 @@ bot.on("guildDelete", guild => {
      	if (err) console.log(err)
 	})
 });
-
+});
 bot.on("message", async message => {
     if(message.author.bot) return;
     if(message.channel.type === "dm") return;
