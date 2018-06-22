@@ -6,7 +6,7 @@ const bot = new Discord.Client({disableEveryone: true});
 
 
 bot.commands = new Discord.Collection();
-
+bot.mutes = require("./mutes.json");
 
 fs.readdir("./cmds/", (err, files) => {
     if(err) console.error(err);
@@ -26,6 +26,29 @@ fs.readdir("./cmds/", (err, files) => {
        });
     });      
 
+bot.setInterval(() => {
+        for(let i in bot.mutes) {
+    let time = bot.mutes[i].time;
+    let guildId = bot.mutes[i].guild;
+    let guild = bot.guilds.get(guildId);
+    let member = guild.members.get(i);
+    let mutedRole = guild.roles.find(r => r.name === "Muted");
+    if(!mutedRole) continue;  
+        
+
+        if(Date.now() > time) {
+        
+        member.removeRole(mutedRole);
+        delete bot.mutes[i];
+       
+                 
+            fs.writeFile("./mutes.json", JSON.stringify(bot.mutes), err => {
+                     if (err) throw err;
+                   });
+                }
+            }       
+        }, 60000)
+    });
     
 bot.on("ready", () => {
    console.log(`${bot.user.username} has started! With ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} servers.`);
