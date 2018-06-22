@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 const prefix = botSettings.prefix;
 const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
-const guildConf = require('./storage/guildconf.json');
+const guildConf = require('./storage/guildConf.json');
 
 bot.commands = new Discord.Collection();
 bot.mutes = require("./mutes.json");
