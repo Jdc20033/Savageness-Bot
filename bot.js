@@ -62,7 +62,7 @@ bot.on("guildCreate", guild => {
    bot.user.setGame(`Playing with ${bot.users.size} users! | $help`);
     if (!guildConf[guild.id]) {
 	guildConf[guild.id] = {
-		prefix: botsettings.prefix
+		prefix: botSettings.prefix
 	}
     }
      fs.writeFile('./storage/guildConf.json', JSON.stringify(guildConf, null, 2), (err) => {
