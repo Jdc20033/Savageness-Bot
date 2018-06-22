@@ -4,7 +4,6 @@ const prefix = botSettings.prefix;
 const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
 
-var config = require('./storages/config.json'); // Config File
 var guildConf = require('.storages/config.json');
 
 bot.commands = new Discord.Collection();
@@ -62,12 +61,12 @@ bot.on("ready", () => {
 bot.on("guildCreate", guild => {
    console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
    bot.user.setGame(`Playing with ${bot.users.size} users! | $help`);
-    if (!guildConf[guild.id]) { // If the guild's id is not on the GUILDCONF File, proceed
+    if (!guildConf[guild.id]) {
 	guildConf[guild.id] = {
-		prefix: config.prefix
+		prefix: botsettings.prefix
 	}
     }
-     fs.writeFile('./storages/guildConf.json', JSON.stringify(guildConf, null, 2), (err) => {
+     fs.writeFile('./storage/guildConf.json', JSON.stringify(guildConf, null, 2), (err) => {
      	if (err) console.log(err)
 	})
 });
@@ -76,8 +75,8 @@ bot.on("guildCreate", guild => {
 bot.on("guildDelete", guild => {
   console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
   bot.user.setGame(`Playing with ${bot.users.size} users! | $help`);
-  delete guildConf[guild.id]; // Deletes the Guild ID and Prefix
-     fs.writeFile('./storages/guildConf.json', JSON.stringify(guildConf, null, 2), (err) => {
+  delete guildConf[guild.id];
+     fs.writeFile('./storage/guildConf.json', JSON.stringify(guildConf, null, 2), (err) => {
      	if (err) console.log(err)
 	})
 });
