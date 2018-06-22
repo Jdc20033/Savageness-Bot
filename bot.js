@@ -24,12 +24,6 @@ bot.on('message', async message => {
 	const args = message.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
 	
-	let prefixes = JSON.parse(fs.readFileSync("./prefixes.json, "utf8"));
-if(!prefixes[message.guild.id]){
-  prefix[message.guild.id] = {
-    prefixes: botconfig.prefix
-};
-}
 
 let prefix = prefixes[message.guild.id].prefixes;
 	if (command === 'ping') {
