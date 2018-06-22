@@ -3,7 +3,6 @@ const Discord = require("discord.js");
 const prefix = botSettings.prefix;
 const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
-const guildConf = require('./storage/guildConf.json');
 
 bot.commands = new Discord.Collection();
 bot.mutes = require("./mutes.json");
@@ -49,9 +48,6 @@ bot.setInterval(() => {
             }       
         }, 60000);
  
-module.exports.run = async(bot, message, args) => {
-
-}
 bot.on("ready", () => {
    console.log(`${bot.user.username} has started! With ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} servers.`);
    bot.user.setGame(`Playing with ${bot.users.size} users! | $help`)
@@ -60,23 +56,11 @@ bot.on("ready", () => {
 bot.on("guildCreate", guild => {
    console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
    bot.user.setGame(`Playing with ${bot.users.size} users! | $help`);
-    if (!guildConf[guild.id]) {
-	guildConf[guild.id] = {
-		prefix: botSettings.prefix
-	}
-    }
-     fs.writeFile('./storage/guildConf.json', JSON.stringify(guildConf, null, 2), (err) => {
-     	if (err) console.log(err)
-	})
-});
+});    
          
 bot.on("guildDelete", guild => {
   console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
   bot.user.setGame(`Playing with ${bot.users.size} users! | $help`);
-  delete guildConf[guild.id];
-     fs.writeFile('./storage/guildConf.json', JSON.stringify(guildConf, null, 2), (err) => {
-     	if (err) console.log(err)
-	})
 });
 
 bot.on("message", async message => {
