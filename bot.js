@@ -59,7 +59,7 @@ if(!prefixes[message.guild.id]){
  }
 
 let prefix2 = prefixes[message.guild.id].prefixes
-console.log(prefix);
+console.log(prefix2);
 }
 
 bot.on("ready", () => {
