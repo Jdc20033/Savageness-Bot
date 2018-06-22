@@ -25,7 +25,6 @@ bot.on('message', async message => {
 	const command = args.shift().toLowerCase();
 	const fs = require("fs");
 
-let prefix = prefixes[message.guild.id].prefixes;
 	if (command === 'ping') {
 		const m = await message.channel.send("Ping?");
         m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`);
@@ -262,30 +261,5 @@ let embed2 = new Discord.RichEmbed()
    message.channel.send(embed);
  
        }
-       else if (command === "prefix") {
-       if(!message.member.hasPermissions("MANAGE_SERVER")) return message.reply("You need a role with manage server permissions!");
-       if(!args[0] || args[0 == "help"]) return message.reply("Usage: $prefix <desired prefix here>");
-
-       let prefixes = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
-
-       prefixes[message.guild.id = {
-       prefixes: args[0]
-}
-
-fs.writeFile("./prefixes.json", JSON.stringify(prefixes), (err) => {
-if (err) console.log(err)
 });
-
-
-let sEmbed = new Discord.RichEmbed()
-.setColor("#ff9900")
-.setTitle("Prefix Set!")
-.setDescription(`Set to ${args[0]}`);
-
-message.channel.send(sEmbed)
-
-
-}
-});
-
 bot.login(process.env.BOT_TOKEN);
