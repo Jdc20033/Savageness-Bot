@@ -47,9 +47,8 @@ bot.setInterval(() => {
                    });
                 }
             }       
-        }, 60000)
-    });
-});  
+        }, 60000);
+ 
 bot.on("ready", () => {
    console.log(`${bot.user.username} has started! With ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} servers.`);
    bot.user.setGame(`Playing with ${bot.users.size} users! | $help`)
@@ -80,4 +79,5 @@ bot.on("message", async message => {
     let cmd = bot.commands.get(commands.slice(prefix.length));
     if(cmd) cmd.run(bot, message, args, input);  
 });
+
 bot.login(process.env.BOT_TOKEN);
