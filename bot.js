@@ -70,7 +70,6 @@ bot.on("guildCreate", guild => {
      	if (err) console.log(err)
 	})
 });
-});
          
 bot.on("guildDelete", guild => {
   console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
@@ -80,7 +79,7 @@ bot.on("guildDelete", guild => {
      	if (err) console.log(err)
 	})
 });
-});
+
 bot.on("message", async message => {
     if(message.author.bot) return;
     if(message.channel.type === "dm") return;
