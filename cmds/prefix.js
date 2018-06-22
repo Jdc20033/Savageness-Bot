@@ -8,7 +8,7 @@ guildConf[message.guild.id].prefix = args[0];
 	})
   }
 }
-
+});
 module.exports.help = {
  name: "prefix"
 }
