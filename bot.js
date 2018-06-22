@@ -26,36 +26,22 @@ fs.readdir("./cmds/", (err, files) => {
        });
     });      
 
-    bot.on("ready", async () => {
     
-    try {
-        let link = await "https://discordapp.com/api/oauth2/authorize?client_id=458029145700433924&permissions=474344695&scope=bot"
-        console.log(link);
-    } catch(e) {
-        console.log(e.stack);
-    }
+bot.on("ready", () => {
+   console.log(`${bot.user.username} has started! With ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} servers.`);
+   bot.user.setGame(`Playing with ${bot.users.size} users! || $help`)
     
-       bot.on("ready", () => {
-           console.log(`${bot.user.username} has started! With ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} servers.`);
-           bot.user.setGame(`Playing with ${bot.users.size} users! || $help`)
-    
-         });
-    
+});
         
-        bot.on("guildCreate", guild => {
-            console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
-            bot.user.setGame(`Playing with ${bot.users.size} users! || $help`);
-          });
+bot.on("guildCreate", guild => {
+   console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
+   bot.user.setGame(`Playing with ${bot.users.size} users! || $help`);
+});
          
-          bot.on("guildDelete", guild => {
-            console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
-            bot.user.setGame(`Playing with ${bot.users.size} users! || $help`);
-          });
-
-    
-
-
-
+bot.on("guildDelete", guild => {
+  console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
+  bot.user.setGame(`Playing with ${bot.users.size} users! || $help`);
+});
 
 bot.on("message", async message => {
     if(message.author.bot) return;
