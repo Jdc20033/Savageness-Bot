@@ -57,7 +57,7 @@ if(!prefixes[message.guild.id]){
   };
  }
 
-let prefix = prefixes[message.guild.id].prefixes
+let prefix2 = prefixes[message.guild.id].prefixes
 console.log(prefix);
 
 
