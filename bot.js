@@ -29,7 +29,7 @@ fs.readdir("./cmds/", (err, files) => {
     bot.on("ready", async () => {
     
     try {
-        let link = await ""
+        let link = await "https://discordapp.com/api/oauth2/authorize?client_id=458029145700433924&permissions=474344695&scope=bot"
         console.log(link);
     } catch(e) {
         console.log(e.stack);
@@ -59,7 +59,7 @@ fs.readdir("./cmds/", (err, files) => {
 
 bot.on("message", async message => {
     if(message.author.bot) return;
-    if(message.channel.type === "dm") return message.channel.send(`Hello! My prefix is "$"! Invite me to your server with the following link {https://discordapp.com/oauth2/authorize?client_id=458018248190066730&permissions=8&scope=bot}} Or join our server main! {https://discord.gg/5Du3jDt} Thanks!`);
+    if(message.channel.type === "dm") return;
 
     let messageArray = message.content.split(/\s+/g);
     let commands = messageArray[0];
@@ -70,8 +70,8 @@ bot.on("message", async message => {
     
 
     let cmd = bot.commands.get(commands.slice(prefix.length));
-    if(cmd) cmd.run(bot, message, args, input);
-  
+    if(cmd) cmd.run(bot, message, args, input);  
 });
-    });
+
+});
 bot.login(process.env.BOT_TOKEN);
