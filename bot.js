@@ -23,8 +23,6 @@ bot.on('message', async message => {
   
 	const args = message.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
-	const fs = require('fs');
-        bot.mutes = require("./mutes.json");
 	
 	if (command === 'ping') {
 		const m = await message.channel.send("Ping?");
@@ -109,6 +107,9 @@ bot.on('message', async message => {
 		message.reply("Here's my invite! https://discordapp.com/api/oauth2/authorize?client_id=458029145700433924&permissions=474344695&scope=bot");
 	}
         else if (command === 'mute') {
+        const fs = require('fs');
+        bot.mutes = require("./mutes.json");
+		
      if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the correct roles!");
 
      let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
