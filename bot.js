@@ -4,7 +4,7 @@ const prefix = botSettings.prefix;
 const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
 
-var guildConf = require('.storages/config.json');
+var guildConf = require('.storage/config.json');
 
 bot.commands = new Discord.Collection();
 bot.mutes = require("./mutes.json");
