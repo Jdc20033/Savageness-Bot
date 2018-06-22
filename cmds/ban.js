@@ -4,8 +4,7 @@ module.exports.run = async(bot, message, args) => {
   if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the proper roles!");
 
   let member = message.mentions.members.first();
-  if(!member)
-    return message.reply("You did not specify a user!");
+  if(!args[0] || args[0 === "help"]) return message.channel.send("Usage: $profile @user")
   if(!member.bannable) 
     return message.reply("I cannot ban this user! Do they have a higher role? Do I have ban permissions?");
 
