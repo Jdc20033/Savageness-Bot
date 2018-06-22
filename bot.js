@@ -1,6 +1,6 @@
 const botSettings = require("./botsettings.json");
 const Discord = require("discord.js");
-const botprefix = botSettings.prefix;
+const prefix = botSettings.prefix;
 const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
 
@@ -58,8 +58,8 @@ if(!prefixes[message.guild.id]){
   };
  }
 
-let prefix = prefixes[message.guild.id].prefixes
-console.log(prefix);
+let prefix2 = prefixes[message.guild.id].prefixes
+console.log(prefix2);
 }
 
 bot.on("ready", () => {
