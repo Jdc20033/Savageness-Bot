@@ -23,7 +23,7 @@ bot.on('message', async message => {
   
 	const args = message.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
-	
+	const fs = require("fs");
 
 let prefix = prefixes[message.guild.id].prefixes;
 	if (command === 'ping') {
