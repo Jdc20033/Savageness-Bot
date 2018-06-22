@@ -109,7 +109,7 @@ bot.on('message', async message => {
 	}
         else if (command === 'mute') {
         const fs = require('fs');
-        const (bot.mutes = JSON.parse(fs.readFileSync("./mutes.json", "utf8")));
+        const bot.mutes = require(`./mutes.json`);
 		
      if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the correct roles!");
 
