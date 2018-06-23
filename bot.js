@@ -41,11 +41,13 @@ bot.setInterval(() => {
         delete bot.mutes[i];
        
                  
-            fs.appendFileSync('./cmds/mutes.json', (bot.mutes));
-            console.log("done it bitch")
+            fs.writeFile("./mutes.json", JSON.stringify(bot.mutes), err => {
+                     if (err) throw err;
+                   });
                 }
             }       
-        }, 60000);
+        }, 60000)
+    }); 
  
 bot.on("ready", () => {
    console.log(`${bot.user.username} has started! With ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} servers.`);
