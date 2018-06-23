@@ -1,8 +1,8 @@
 const Discord = require("discord.js");
 const watched = new Discord.Collection();
 
-  module.exports.run = async(bot, message, args) => {
-  const channel = (client.channels.get(args[0]) || message.channel);
+module.exports.run = async(bot, message, args) => {
+  const channel = (bot.channels.get(args[0]) || message.channel);
   if(watched.has(channel.id)) {
     watched.get(channel.id).stop();
     message.edit("Channel Watch Stopped on #"+channel.name);
