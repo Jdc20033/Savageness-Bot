@@ -8,7 +8,6 @@ module.exports.run = async(bot, message, args) => {
     message.channel.send("Channel Watch Stopped on #"+channel.name);
     return watched.delete(channel.id);
   }
-  const bot = new Discord.Client();
 
 function makeChannel(message){
     var server = message.guild;
