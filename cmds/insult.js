@@ -30,8 +30,7 @@ if(!target) return message.channel.send(sayings[result]);
     
     const sayMessage = args.join(" ");
     message.delete().catch(O_o=>{}); 
-    message.channel.send(sayMessage);
-message.channel.send(target + sayings[result]);
+    message.channel.send(target +" "sayings[result]);
 
 }
 
