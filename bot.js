@@ -5,7 +5,7 @@ const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
 
 bot.commands = new Discord.Collection();
-bot.mutes = require("./mutes.json");
+bot.mutes = require("./cmds/mutes.json");
 
 fs.readdir("./cmds/", (err, files) => {
     if(err) console.error(err);
@@ -41,9 +41,7 @@ bot.setInterval(() => {
         delete bot.mutes[i];
        
                  
-            fs.appendFileSync(`./mutes.json`, (bot.mutes), 'utf8', err => { 
-
-                     if (err) throw err;
+            fs.appendFile('./cmds'+./mutes.json,'bot.mutes','utf8',(err)=>{if(err) throw err; console.log('data was appended to '+./mutes.json)})
                    });
                 }
             }       
