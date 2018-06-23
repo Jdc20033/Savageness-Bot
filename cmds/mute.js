@@ -1,6 +1,6 @@
 const fs = module.require("fs");
-const bot = new Discord.Client({disableEveryone: true});
 const Discord = require("discord.js");
+const bot = new Discord.Client({disableEveryone: true});
 
 bot.mutes = require("./cmds/mutes.json");
 
