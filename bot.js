@@ -3,11 +3,6 @@ const Discord = require("discord.js");
 const prefix = botSettings.prefix;
 const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
-const git = require("git");
-
-$ git add <bob>
-    
-$ git commit -m "<bob>"
 
 bot.commands = new Discord.Collection();
 bot.mutes = require("./mutes.json");
