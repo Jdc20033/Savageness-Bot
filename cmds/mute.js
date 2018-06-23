@@ -39,10 +39,10 @@ module.exports.run = async (bot, message, args) => {
     
         const fs = require('fs');
 
-fs.appendFileSync('mutes.json', (bot.mutes));
-            console.log("done it bitch");
+fs.appendFileSync('./cmds/mutes.json', (bot.mutes));
+            console.log("done it bitch")
             message.channel.send(`Muted ${toMute.user.tag}.` );
-    });
+   
    
     
     module.exports.help = {
