@@ -23,11 +23,12 @@ var sayings = ["I'd like to see things from your point of view, but my head does
 `You: "I look fat. Can you give me a compliment?" Your other: "You have perfect eyesight."`,
 "Behind every fat woman there is a beautiful woman. No seriously, gtfo the way."];
 
-
-
 var result = Math.floor((Math.random() * sayings.length) + 0);
 
-message.channel.send(result);
+let target = message.mentions.users.first() || message.author;
+if(!target) return message.channel.send(result);
+
+message.channel.send(target, result);
 
 }
 
