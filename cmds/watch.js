@@ -9,7 +9,7 @@ module.exports.run = async(bot, message, args) => {
     return watched.delete(channel.id);
   }
   
-  message.edit("I have started watching #"+channel.name);
+  message.channel.send("I have started watching #"+channel.name);
   const collector = channel.createMessageCollector(()=>true);
   collector.on("collect", (collected, collector) => console.log(`[Watched][${collected.author.username}][#${collected.channel.name}]${collected.content}`));
   watched.set(channel.id, collector);
