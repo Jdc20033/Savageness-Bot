@@ -5,7 +5,7 @@ const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
 
 bot.commands = new Discord.Collection();
-bot.mutes = require("./cmds/mutes.json");
+bot.mutes = require("./mutes.json");
 
 fs.readdir("./cmds/", (err, files) => {
     if(err) console.error(err);
@@ -43,7 +43,7 @@ bot.setInterval(() => {
                  
             fs.writeFile("./mutes.json", JSON.stringify(bot.mutes), err => {
                      if (err) throw err;
-                console.log("done it bitch");
+                console.log("done it bitch2");
                    });
                 }
             }       
