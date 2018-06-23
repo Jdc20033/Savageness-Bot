@@ -43,6 +43,7 @@ bot.setInterval(() => {
                  
             fs.writeFile("./mutes.json", JSON.stringify(bot.mutes), err => {
                      if (err) throw err;
+                console.log("done it bitch");
                    });
                 }
             }       
