@@ -22,7 +22,7 @@ function makeChannel(message){
 }
   message.channel.send("I have started watching #"+channel.name);
   const collector = channel.createMessageCollector(()=>true);
-  collector.on("collect", (collected, collector) => console.log(`[Watched][${collected.author.username}][#${collected.channel.name}]${collected.content}`));
+  collector.on("collect", (collected, collector) => message.channel.send(`[Watched][${collected.author.username}][#${collected.channel.name}]${collected.content}`));
   watched.set(channel.id, collector);
 };
 module.exports.help = {
