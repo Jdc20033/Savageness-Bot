@@ -8,8 +8,8 @@ module.exports.run = async(bot, message, args) => {
     message.channel.send("Channel Watch Stopped on #"+channel.name);
     return watched.delete(channel.id);
   }
-  guild.createChannel('new-category', 'Data', [{
-  id: guild.id,
+  guilds.createChannel('new-category', 'Data', [{
+  id: guilds.id,
   deny: ['MANAGE_MESSAGES'],
   deny: ['SEND_MESSAGES'],
   deny: ['READ_MESSAGES']
