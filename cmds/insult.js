@@ -25,10 +25,10 @@ var sayings = ["I'd like to see things from your point of view, but my head does
 
 var result = Math.floor((Math.random() * sayings.length) + 0);
 
-let target = message.mentions.users.first() || message.author;
-if(!target) return message.channel.send(target, sayings[result]);
+let target = message.mentions.users.first()
+if(!target) return message.channel.send(sayings[result]);
 
-message.channel.send(sayings[result]);
+message.channel.send(target, sayings[result]);
 
 }
 
