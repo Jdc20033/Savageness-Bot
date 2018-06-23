@@ -28,7 +28,7 @@ var result = Math.floor((Math.random() * sayings.length) + 0);
 let target = message.mentions.users.first()
 if(!target) return message.channel.send(sayings[result]);
 
-message.channel.send(target, sayings[result]);
+message.channel.send(target + sayings[result]);
 
 }
 
