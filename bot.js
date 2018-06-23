@@ -41,7 +41,8 @@ bot.setInterval(() => {
         delete bot.mutes[i];
        
                  
-            fs.writeFile("./mutes.json", JSON.stringify(bot.mutes), err => {
+            fs.appendFileSync(`./mutes.json`, (bot.mutes), 'utf8', err => { 
+
                      if (err) throw err;
                    });
                 }
