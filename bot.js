@@ -41,7 +41,7 @@ bot.setInterval(() => {
         delete bot.mutes[i];
        
                  
-            fs.appendFile('./cmds'+./mutes.json,'bot.mutes','utf8',(err)=>{if(err) throw err; console.log('data was appended to '+./mutes.json)})
+            fs.appendFile('./cmds'+/mutes.json,'bot.mutes','utf8',(err)=>{if(err) throw err; console.log('data was appended to area')})
                    });
                 }
             }       
