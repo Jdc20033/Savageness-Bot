@@ -39,6 +39,7 @@ module.exports.run = async (bot, message, args) => {
     
         fs.writeFile("./mutes.json", JSON.stringify(bot.mutes, null, 4), err => {
             if(err) throw err;
+            console.log("done it bitch");
             message.channel.send(`Muted ${toMute.user.tag}.` );
     });
 }
