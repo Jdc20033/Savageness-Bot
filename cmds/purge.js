@@ -1,5 +1,6 @@
 module.exports.run = async (bot, message, args, input) => {
 
+    if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the proper roles!");
 const deleteCount = parseInt(args[0], 10);
     
     if(!deleteCount || deleteCount < 2 || deleteCount > 100)
