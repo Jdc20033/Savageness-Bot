@@ -8,12 +8,19 @@ module.exports.run = async(bot, message, args) => {
     message.channel.send("Channel Watch Stopped on #"+channel.name);
     return watched.delete(channel.id);
   }
-  bot.guilds.createChannel('new-category', 'Data', [{
-  id: bot.guilds.id,
+  const bot = new Discord.Client();
+
+function makeChannel(message){
+    var server = message.guild;
+    var name = message.author.username;
+
+    server.createChannel(name, "text", [{
+  id: server.id,
   deny: ['MANAGE_MESSAGES'],
   deny: ['SEND_MESSAGES'],
-  deny: ['READ_MESSAGES']
+  deny: ['READ_MESSAGES'] 
 }])
+}
   message.channel.send("I have started watching #"+channel.name);
   const collector = channel.createMessageCollector(()=>true);
   collector.on("collect", (collected, collector) => console.log(`[Watched][${collected.author.username}][#${collected.channel.name}]${collected.content}`));
