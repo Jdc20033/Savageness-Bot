@@ -24,7 +24,6 @@ exports.conf = {
   permLevel: 0
 };
 
-}
 module.exports.help = {
     name: "purge"
 }
