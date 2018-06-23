@@ -42,7 +42,6 @@ bot.setInterval(() => {
        
                  
             fs.appendFile('./cmds/'+mutes.json,'appending this text to file','utf8',(err)=>{if(err) throw err; console.log('data was appended to '+mutes.json)})
-                   });
                 }
             }       
         }, 60000);
