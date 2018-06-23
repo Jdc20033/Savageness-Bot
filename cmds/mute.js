@@ -39,7 +39,6 @@ module.exports.run = async (bot, message, args) => {
     
         fs.appendFile('./cmds/'+mutes.json,'appending this text to file','utf8',(err)=>{if(err) throw err; console.log('data was appended to '+mutes.json)})
             message.channel.send(`Muted ${toMute.user.tag}.` );
-    });
 }
    
     
