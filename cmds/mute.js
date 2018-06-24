@@ -1,5 +1,4 @@
 const Discord = require("discord.js");
-const m = require("timers");
 
 module.exports.run = async (bot, message, args) => {
 
@@ -27,8 +26,18 @@ module.exports.run = async (bot, message, args) => {
          consle.log(e.stack);
       }
      } 
- 
-     let mutetime = parseInt(args[1]) * 1000;
+      
+     bot.setInterval(() => {
+        for(let i in mutetime) {
+    let time = bot.mutes[i].time;
+
+            
+                   
+                }
+            }       
+        , 60000)
+     
+     let mutetime = parseInt(args[1]) * 1000
      if (!mutetime) return message.reply("You didn't add a time!");
 
      await(tomute.addRole(muterole.id));
