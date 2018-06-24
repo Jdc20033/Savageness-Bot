@@ -37,9 +37,8 @@ module.exports.run = async (bot, message, args) => {
 
         await toMute.addRole(role);  
     
-        fs.writeFile("./mutes.json", JSON.stringify(bot.mutes, null, 4), err => {
+        fs.writeFile("./cmds/mutes.json", JSON.stringify(bot.mutes, null, 4), err => {
             if(err) throw err;
-            console.log("done it bitch1");
             message.channel.send(`Muted ${toMute.user.tag}.` );
     });
 }
