@@ -6,7 +6,6 @@ const bot = new Discord.Client({disableEveryone: true});
 
 
 bot.commands = new Discord.Collection();
-bot.mutes = require("./cmds/mutes.json");
 
 
 fs.readdir("./cmds/", (err, files) => {
