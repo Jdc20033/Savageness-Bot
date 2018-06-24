@@ -28,7 +28,7 @@ module.exports.run = async (bot, message, args) => {
       }
      } 
  
-     let mutetime = args[1];
+     let mutetime = parseInt(args[1]) * 1000;
      if (!mutetime) return message.reply("You didn't add a time!");
 
      await(tomute.addRole(muterole.id));
@@ -37,7 +37,7 @@ module.exports.run = async (bot, message, args) => {
      setTimeout(function(){
        tomute.removeRole(muterole.id);
        message.channel.send(`<@${tomute.id}> has been unmuted!`);
-     }, parseInt(args[1]) * 1000(mutetime));
+     }, (mutetime));
 
 }
 
