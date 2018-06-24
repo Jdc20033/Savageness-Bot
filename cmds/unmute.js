@@ -15,11 +15,9 @@ module.exports.run = async (bot, message, args) => {
              
               delete bot.mutes[toMute.id];
 
-              fs.writeFile("./mutes.json", JSON.stringify(bot.mutes, null, 4), err => {
-                if(err) throw err;
-                message.channel.send(`Unmuted ${toMute.user.tag}.` );
               
-               })} 
+              
+ } 
 
 
                 
