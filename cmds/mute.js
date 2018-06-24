@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const m = require("timers");
 
 module.exports.run = async (bot, message, args) => {
 
@@ -31,7 +32,7 @@ module.exports.run = async (bot, message, args) => {
      if (!mutetime) return message.reply("You didn't add a time!");
 
      await(tomute.addRole(muterole.id));
-     message.reply(`<@${tomute.id}> has been unmuted!`);
+     message.reply(`<@${tomute.id}> has been muted!`);
    
      setTimeout(function(){
        tomute.removeRole(muterole.id);
