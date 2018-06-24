@@ -27,17 +27,7 @@ module.exports.run = async (bot, message, args) => {
       }
      } 
       
-     bot.setInterval(() => {
-        for(let i in mutetime) {
-    let time = bot.mutes[i].time;
-
-            
-                   
-                }
-            }       
-        , 60000)
-     
-     let mutetime = parseInt(args[1]) * 1000
+     let mutetime = parseInt(args[1]) * 60000
      if (!mutetime) return message.reply("You didn't add a time!");
 
      await(tomute.addRole(muterole.id));
