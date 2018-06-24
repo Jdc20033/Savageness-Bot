@@ -1,7 +1,10 @@
 module.exports.run = async (bot, message, args, input) => {
-    role.edit({ name: 'Savageness Bot',
-                color: "#ff0000"
-})
+    
+    var role = message.member.roles.find('name','Savgeness Bot')
+    
+    role.edit({ color: "#ff0000"})
+           
+
 
 }
 
