@@ -26,7 +26,7 @@ var sayings = [" I'd like to see things from your point of view, but my head doe
 var result = Math.floor((Math.random() * sayings.length) + 0);
 
 let target = message.mentions.users.first()
-if(!target) return message.channel.send(sayings[result]);
+if(!target) return message.reply(sayings[result]);
     
     const sayMessage = args.join(" ");
     message.delete().catch(O_o=>{}); 

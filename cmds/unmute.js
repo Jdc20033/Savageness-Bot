@@ -14,7 +14,7 @@ module.exports.run = async (bot, message, args) => {
               await toMute.removeRole(role);  
              
               delete [toMute.id];
-
+              message.channel.send(`Unmuted ${toMute.user.tag}.` );
               
               
  } 
