@@ -2,7 +2,8 @@ const Discord = require("discord.js");
 const watched = new Discord.Collection();
 module.exports.run = async(bot, message, args) => {
 if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the proper roles!");
-    message.guild.createChannel('logs', 'text', [{
+const server = message.guild.id;
+message.server.createChannel('logs', 'text', [{
         id: guild.id,
          deny: ['MANAGE_MESSAGES'],
          deny: ['SEND_MESSAGES'],
