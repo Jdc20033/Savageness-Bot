@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args) => {
         
               await toMute.removeRole(role);  
              
-              delete bot.mutes[toMute.id];
+              delete [toMute.id];
 
               
               
