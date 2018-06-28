@@ -2,7 +2,8 @@ module.exports.run = async (bot, message, args) => {
 
 let person = (message.guild.members.get(args[0]));
 
-if(person.hasPermission('MANAGE_SERVER')) return message.channel.send("You don't have the proper roles!");
+let caller = message.author
+  if(caller.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the proper roles!");
 
 const input = args.join(" ");
 
