@@ -1,8 +1,8 @@
 module.exports.run = async (bot, message, args) => {
     
-    message.react(':thumbsup:')
-    message.react(':thumbsdown:')
-    message.react(':thinking:')
+    message.react('👍')
+    message.react('👎')
+    message.react('🤔')
 
 }
 module.exports.help = {
