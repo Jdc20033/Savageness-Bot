@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, args) => {
 
 
 
-  let member = await message.guild.fetchMember(user.id);
+  let member = await message.guild.fetchMember(author.id);
   if (message.author.id !== message.guild.ownerID && message.member.highestRole.comparePositionTo(member.highestRole) <= 0) return bot.log.info(bot.i18n.error(message.guild.language, 'lowerRole'));
 
   args.reason = args.reason.join(' ');
