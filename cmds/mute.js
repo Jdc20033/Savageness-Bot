@@ -4,56 +4,40 @@ module.exports.run = async (bot, message, args) => {
 
 
 
-  let member = await message.guild.fetchMember(author.id);
-  if (message.author.id !== message.guild.ownerID && message.member.highestRole.comparePositionTo(member.highestRole) <= 0) return bot.log.info(bot.i18n.error(message.guild.language, 'lowerRole'));
+  let tomute = message.mentions.members.first() || message.guild.members.get(args[0]);
+  if(!tomute) return message.channel.send("You did not mention a user!");
+  if(tomute.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the proper roles!");
+  let muterole = message.guild.roles.find(`name`, "Muted");
 
-  args.reason = args.reason.join(' ');
-
-  if (args.server) {
-    let mutedRole = message.guild.roles.find('name', 'Muted');
-    if (!mutedRole) {
-      mutedRole = await message.guild.createRole({ name:'Muted' });
-    }
-
-    await member.addRole(mutedRole, args.reason);
-
-    for (let channel of message.guild.channels.filter(channel => channel.type === 'text')) {
-      channel = channel[1];
-      if (!channel.permissionOverwrites.get(mutedRole.id)) {
-        await channel.overwritePermissions(mutedRole, {
-          SEND_MESSAGES: false,
-          ADD_REACTIONS: false
+  if(!muterole){
+    try{
+      muterole = await message.guild.createRole({
+        name: "Muted",
+        color: "#4b4b4b",
+        permissions: []
+       })
+       message.guild.channels.forEach(async (channel, id) => {
+         await channel.overwritePermission(muterole, {
+           SEND_MESSAGES: false,
+           ADD_REACTIONS: false
+         });
         });
+      }catch(e){
+         consle.log(e.stack);
       }
+     } 
+      
+     let mutetime = parseInt(args[1]) * 60000
+     if (!mutetime) return message.channel.send("You didn't add a time!");
+
+     await(tomute.addRole(muterole.id));
+     message.channel.send(`Muted ${toMute.user.tag}.` );
+   
+     setTimeout(function(){
+       tomute.removeRole(muterole.id);
+       message.channel.send(`Unmuted ${toMute.user.tag}.` );
+     }, (mutetime));
     }
-  }
-  else {
-    await message.channel.overwritePermissions(user, {
-      SEND_MESSAGES: false,
-      ADD_REACTIONS: false
-    }, args.reason);
-
-    if (args.timeout) {
-      args.timeout = Math.abs(args.timeout);
-
-      if (!args.timeout || args.timeout > 1440) args.timeout = 1440;
-
-      bot.setTimeout(async () => {
-        try {
-          let permissionOverwrites = message.channel.permissionOverwrites.get(user.id);
-          if (permissionOverwrites) {
-            await permissionOverwrites.delete();
-          }
-        }
-        catch (e) {
-          bot.log.error(e);
-        }
-      }, args.timeout * 60 * 1000);
-    }
-  }
-
-}
-
 module.exports.help = {
   name: "mute"
 }
