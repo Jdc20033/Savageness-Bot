@@ -8,12 +8,13 @@ module.exports.run = async(bot, message, args) => {
         	} else if (result == 2) {
         		message.channel.send("The coin landed on tails! ");
         	}}
-        
-
 
 			exports.conf = {
 				aliases: ['Coinflip', 'Flips a coin']
 				};
 				exports.help = {
 				name: "Coinflip", description: "Flips a coin", usage: "$coinflip"
+				}
+				module.exports.help = {
+					name: "avatar"
 				}
