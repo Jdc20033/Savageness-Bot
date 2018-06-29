@@ -66,5 +66,7 @@ fs.readdir("./cmds/", (err, files) => {
     if(cmd) cmd.run(bot, message, args, input);
   
 });
+//blocked users
+if (message.author.id !== '323989674399891459') return;
 
 bot.login(process.env.BOT_TOKEN);
