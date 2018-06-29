@@ -9,7 +9,7 @@ module.exports.run = async(bot, message, args) => {
 setTimeout(function() {
     module.exports.run = async(bot) => {
     bot.login(process.env.BOT_TOKEN);
-}}, 120000); 
+}}, 80000); 
 
     
 
