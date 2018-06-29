@@ -7,8 +7,9 @@ module.exports.run = async(bot, message, args) => {
     bot.destroy()
 }
 setTimeout(function() {
+    module.exports.run = async(bot) => {
     bot.login(process.env.BOT_TOKEN);
-}, 180000); 
+}}, 120000); 
 
     
 
