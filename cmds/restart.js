@@ -5,15 +5,8 @@ module.exports.run = async(bot, message, args) => {
     else if (message.channel.send("Restarting bot!"))
     console.log("Requested restart!");
     bot.destroy()
-}
-setTimeout(function() {
-    module.exports.run = async(bot) => {
     bot.login(process.env.BOT_TOKEN);
-}}, 80000); 
-
-    
-
-    
+} 
     module.exports.help = {
         name: "restart"
     }
