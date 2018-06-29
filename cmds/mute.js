@@ -28,15 +28,13 @@ module.exports.run = async (bot, message, args) => {
      } 
       
      let mutetime = parseInt(args[1]) * 60000
-     if (!mutetime) return message.channel.send("You didn't add a time!");
-
-     await(tomute.addRole(muterole.id));
+     if (!mutetime) return await(tomute.addRole(muterole.id)); 
      message.channel.send(`Muted ${toMute.user.tag}.` );
-   
+     if (mutetime)(   
      setTimeout(function(){
        tomute.removeRole(muterole.id);
        message.channel.send(`Unmuted ${toMute.user.tag}.` );
-     }, (mutetime));
+     }, (mutetime)));
 
 }
 
