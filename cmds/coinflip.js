@@ -9,12 +9,6 @@ module.exports.run = async(bot, message, args) => {
         		message.channel.send("The coin landed on tails! ");
         	}}
 
-			exports.conf = {
-				aliases: ['Coinflip', 'Flips a coin']
-				};
-				exports.help = {
-				name: "Coinflip", description: "Flips a coin", usage: "$coinflip"
-				}
 				module.exports.help = {
-					name: "avatar"
+				name: "Coinflip"
 				}

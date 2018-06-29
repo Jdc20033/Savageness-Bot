@@ -19,6 +19,9 @@ module.exports.run = async(message, args) => {
 }
 
 
-module.exports.help = {
-    name: "ban"
-}
+module.exports.conf = {
+  aliases: ['Ban', 'Bans a mentioned user']
+  };
+  module.exports.help = {
+  name: "Ban", usage: "$ban @user"
+  }

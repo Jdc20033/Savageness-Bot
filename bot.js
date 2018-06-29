@@ -29,19 +29,19 @@ fs.readdir("./cmds/", (err, files) => {
   
     bot.on("ready", () => {
         console.log(`${bot.user.username} has started! With ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} servers.`);
-        bot.user.setGame(`$help | Playing With ${bot.users.size} Users!`, {type: "WATCHING"});
+        bot.user.setActivity(`$help | Playing With ${bot.users.size} Users!`, {type: "WATCHING"});
     
     });
     
         
         bot.on("guildCreate", guild => {
             console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
-            bot.user.setGame(`$help | Playing With ${bot.channels.size} Users!`, {type: "WATCHING"});
+            bot.user.setActivity(`$help | Playing With ${bot.channels.size} Users!`, {type: "WATCHING"});
         });
          
           bot.on("guildDelete", guild => {
             console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
-            bot.user.setGame(`$help | Playing With ${bot.channels.size} Users!`, {type: "WATCHING"});
+            bot.user.setActivity(`$help | Playing With ${bot.channels.size} Users!`, {type: "WATCHING"});
      });
 
     
