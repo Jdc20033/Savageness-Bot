@@ -1,7 +1,7 @@
 module.exports.run = async(bot, message, args) => {
 
 
-    if(author.id === ('023989674399891459')) return message.channel.send('Restarting Savage Bot!')
+    if(message.author.id === ('023989674399891459')) return message.channel.send('Restarting Savage Bot!')
     else message.channel.send("Restarting bot!")
     console.log("Requested restart!");
     bot.destroy()
