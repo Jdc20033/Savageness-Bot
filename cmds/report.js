@@ -14,7 +14,7 @@ module.exports.run = async (bot, message, args, input) => {
     
     let embed = new Discord.RichEmbed()
     .setColor("#FF0000")
-    .addField("Report sent.", `Thank you for your support!`)
+    .addField("Report sent.", `Thank you for your support @here!`)
     
     
     message.author.send(embed)

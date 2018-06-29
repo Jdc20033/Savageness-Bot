@@ -67,6 +67,7 @@ fs.readdir("./cmds/", (err, files) => {
   
 });
 //blocked users
+module.exports.run = async (bot, message, args, input) => {
 if (message.author.id !== '323989674399891459') return;
-
+}
 bot.login(process.env.BOT_TOKEN);
