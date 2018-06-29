@@ -26,14 +26,13 @@ module.exports.run = async (bot, message, args) => {
          consle.log(e.stack);
       }
      } 
-      
+     let tomute2 = message.mentions.members.first() || message.guild.members.get(args[0]);
      let mutetime2 = parseInt(args[1]) * 60000
-     if (!mutetime2) await(tomute.addRole(muterole.id)(message.channel.send(`Muted ${toMute.user.tag}.` )));
-     if (tomute) await(tomute.addRole(muterole.id)(message.channel.send(`Muted ${toMute.user.tag}.` )));
-   
+     if (!mutetime2) await(tomute2.addRole(muterole.id)(message.channel.send(`Muted ${toMute2.user.tag}.` )));
+     if (tomute2) await(tomute2.addRole(muterole.id)(message.channel.send(`Muted ${toMute2.user.tag}.` )));
      setTimeout(function(){
-       tomute.removeRole(muterole.id);
-       message.channel.send(`Unmuted ${toMute.user.tag}.` );
+       tomute2.removeRole(muterole.id);
+       message.channel.send(`Unmuted ${toMute2.user.tag}.` );
      }, (mutetime));
 
 }
