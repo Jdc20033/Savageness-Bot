@@ -18,14 +18,6 @@ module.exports.run = async(bot, message, args) => {
   message.channel.send(`${member.user.tag} has been banned by ${message.author.tag} Reason: ${reason}`);
 }
 
-exports.conf = {
-  enabled: true,
-  guildOnly: false,
-  aliases: [],
-  permLevel: 0
-};
-
 exports.help = {
-  name: 'ban',
-  description: 'Bans a mentioned user.',
-  usage: 'ban @mention'};
+  name: 'ban'
+}
