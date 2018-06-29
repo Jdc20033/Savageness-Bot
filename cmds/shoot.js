@@ -15,9 +15,9 @@ const links = ["https://media.giphy.com/media/VdcYTcb2nRSIU/giphy.gif",
 
 var result = Math.floor((Math.random() * links.length) + 0);
 
-let target = message.mentions.members.first();
+let target = message.mentions.users.first() || message.author;
 if(!target) return message.reply(links[result]);
-    message.channel.send(target +  links[result]);
+        message.channel.send(target +  links[result]);
 
 }
     module.exports.help = {
