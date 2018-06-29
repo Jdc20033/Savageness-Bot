@@ -1,4 +1,4 @@
-module.exports.run = async (message) => {
+module.exports.run = async(bot, message, args) => {
 
 
 const links = ["https://media.giphy.com/media/VdcYTcb2nRSIU/giphy.gif",
