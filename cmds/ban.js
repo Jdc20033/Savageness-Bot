@@ -18,10 +18,6 @@ module.exports.run = async(message, args) => {
   message.channel.send(`${member.user.tag} has been banned by ${message.author.tag} Reason: ${reason}`);
 }
 
-
-module.exports.conf = {
-  aliases: ['Ban', 'Bans a mentioned user']
-  };
   module.exports.help = {
-  name: "Ban", usage: "$ban @user"
+  name: "Ban"
   }
