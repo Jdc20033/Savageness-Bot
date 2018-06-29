@@ -1,4 +1,4 @@
-module.exports.run = async(bot, message, args) => {
+module.exports.run = async(message, args) => {
 
 
   if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the proper roles!");
