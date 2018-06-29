@@ -41,11 +41,12 @@ fs.readdir("./cmds/", (err, files) => {
          
           bot.on("guildDelete", guild => {
             console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
-            bot.user.setActivity(`$help | Playing With ${bot.channels.size} Users!`, {type: "WATCHING"});
+            bot.user.setGame(`$help | Playing With ${bot.channels.size} Users!`, {type: "WATCHING"});
      });
 
-    
-
+     bot.on("ready", () => {
+         bot.user.setUsername('Savage Bot');
+     });
 
 
 
