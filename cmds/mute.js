@@ -4,36 +4,53 @@ module.exports.run = async (bot, message, args) => {
 
 
 
-  let tomute = message.mentions.members.first() || message.guild.members.get(args[0]);
-  if(!tomute) return message.channel.send("You did not mention a user!");
-  if(tomute.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the proper roles!");
-  let muterole = message.guild.roles.find(`name`, "Muted");
+  let member = await message.guild.fetchMember(user.id);
+  if (message.author.id !== message.guild.ownerID && message.member.highestRole.comparePositionTo(member.highestRole) <= 0) return bot.log.info(bot.i18n.error(message.guild.language, 'lowerRole'));
 
-  if(!muterole){
-    try{
-      muterole = await message.guild.createRole({
-        name: "Muted",
-        color: "#4b4b4b",
-        permissions: []
-       })
-       message.guild.channels.forEach(async (channel, id) => {
-         await channel.overwritePermission(muterole, {
-           SEND_MESSAGES: false,
-           ADD_REACTIONS: false
-         });
+  args.reason = args.reason.join(' ');
+
+  if (args.server) {
+    let mutedRole = message.guild.roles.find('name', 'Muted');
+    if (!mutedRole) {
+      mutedRole = await message.guild.createRole({ name:'Muted' });
+    }
+
+    await member.addRole(mutedRole, args.reason);
+
+    for (let channel of message.guild.channels.filter(channel => channel.type === 'text')) {
+      channel = channel[1];
+      if (!channel.permissionOverwrites.get(mutedRole.id)) {
+        await channel.overwritePermissions(mutedRole, {
+          SEND_MESSAGES: false,
+          ADD_REACTIONS: false
         });
-      }catch(e){
-         consle.log(e.stack);
       }
-     } 
-     let tomute2 = message.mentions.members.first() || message.guild.members.get(args[0]);
-     let mutetime2 = parseInt(args[1]) * 60000
-     if (!mutetime2) await(tomute2.addRole(muterole.id)(message.channel.send(`Muted ${toMute2.user.tag}.` )));
-     if (tomute2) await(tomute2.addRole(muterole.id)(message.channel.send(`Muted ${toMute2.user.tag}.` )));
-     setTimeout(function(){
-       tomute2.removeRole(muterole.id);
-       message.channel.send(`Unmuted ${toMute2.user.tag}.` );
-     }, (mutetime));
+    }
+  }
+  else {
+    await message.channel.overwritePermissions(user, {
+      SEND_MESSAGES: false,
+      ADD_REACTIONS: false
+    }, args.reason);
+
+    if (args.timeout) {
+      args.timeout = Math.abs(args.timeout);
+
+      if (!args.timeout || args.timeout > 1440) args.timeout = 1440;
+
+      bot.setTimeout(async () => {
+        try {
+          let permissionOverwrites = message.channel.permissionOverwrites.get(user.id);
+          if (permissionOverwrites) {
+            await permissionOverwrites.delete();
+          }
+        }
+        catch (e) {
+          bot.log.error(e);
+        }
+      }, args.timeout * 60 * 1000);
+    }
+  }
 
 }
 
