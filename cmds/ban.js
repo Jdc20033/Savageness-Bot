@@ -19,5 +19,5 @@ module.exports.run = async(message, args) => {
 }
 
   module.exports.help = {
-  name: "Ban"
+  name: "ban"
   }
