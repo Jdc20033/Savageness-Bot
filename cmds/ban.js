@@ -1,23 +1,34 @@
 module.exports.run = async(bot, message, args) => {
 
 
+  let member = message.guild.member(message.mentions.user.first() || message.guild.members.get(args[0]));
+  if(!member) return message.channel.send("You didn't mention a user!");
+  let reason = args.join(" ").slice(22);
+  if(!reason) return;
   if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the proper roles!");
-
-  let member = message.mentions.members.first();
-  if(!member)
-    return message.channel.send("You did not specify a user!");
-  if(!member.bannable) 
-    return message.channel.send("I cannot ban this user! Do they have a higher role? Do I have ban permissions?");
-
-  let reason = args.slice(1).join(' ');
-  if(!reason)
-    return message.channel.send("Please indicate a reason for the ban!");
+  if(member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("I cannot ban this user! Do they have a higher role?Do I have ban permissions?");
   
-  await member.ban(reason)
-    .catch(error => message.channel.send(`Sorry ${message.author} I couldn't ban the user. Reason: ${error}`));
-  message.channel.send(`${member.user.tag} has been banned by ${message.author.tag} Reason: ${reason}`);
-}
-
+  let banEmbed = new Discord.RichEmbed()
+  .setDescription("**ban**")
+  .setColor("#ff0000")
+  .addField("Banned user", `${member} with ID ${member.id}`)
+  .addField("Banned by", `<@${message.author.id}> with ID ${message.author.id}`)
+  .addField("Banned in", message.channel)
+  .addField("Time", message.createdAt)
+  .addField("Reason", reason);
+  
+  
+  let logs = message.guild.channels.find(`name`, "logs");
+  if(!logs) message.guild.createChannel('logs', 'text', [{
+          id: message.guild.id,
+          deny: ['MANAGE_MESSAGES'],
+          deny: ['SEND_MESSAGES'],
+          deny: ['READ_MESSAGES']
+        }])
+  
+  message.guild.member(member).ban(reason);
+  logs.send(banEmbed);
+      }
 exports.help = {
   name: 'ban'
 }
