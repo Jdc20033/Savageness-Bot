@@ -1,6 +1,6 @@
 module.exports.run = async(bot, message, args) => {
     let target = message.mentions.users.first() || message.author;
-    const links = [" https://media.giphy.com/media/VdcYTcb2nRSIU/giphy.gif",
+    const links = [" http://media.giphy.com/media/VdcYTcb2nRSIU/giphy.gif",
     " http://media.giphy.com/media/4cz3D8Yhyzcg8/giphy.gif",
     " http://media.giphy.com/media/cS9lGF8gIBdQs/giphy.gif",
     " http://media.giphy.com/media/MZDXTFeePBia4/giphy.gif",
