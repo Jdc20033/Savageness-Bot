@@ -1,23 +1,27 @@
 module.exports.run = async (bot, message, args, input) => {
-    const Discord = require("discord.js");
+
+    let person = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    if(!person) return message.channel.send("You did not mention a user!");
+    let reason = args.join(" ").slice(22);
+    if(!reason) return message.channel.send("You did not give a reason!")
+
+    let reportEmbed = new Discord.RichEmbed()
+    .setDescription("Reports")
+    .setColor("#ff0000")
+    .addField("Reported User", `${person} with ID: ${person.id}`)
+    .addField("Reported by", `${message.author} with ID: ${message.author.id}`)
+    .addField("Channel", message.channel)
+    .addField("Time", message.createdAt)
+    .addField("Reason", reason);
     
-    {
-        const User = message.author.username
-        const UserDis = message.author.discriminator
-        const Info = message.author.id
-       
-        const sayMessage = args.join(" ");
+    let logs = message.guild.channels.find(`name`, "logs");
+    if(!logs) return message.channel.send("Couldn't find logs channel, do I have permission to read it? Is it created?");
     
-    console.log(`${User}#${UserDis} ID = ${Info} Reported: ${(sayMessage)}`)
     
-    let embed = new Discord.RichEmbed()
-    .setColor("#FF0000")
-    .addField("Report sent.", `Thank you for your support @here!`)
-    
-    message.author.send(embed)    
-    }
-}
-    
+    message.delete().catch(O_o=>{});
+    logs.send(reportEmbed);
+
+}    
     module.exports.help = {
         name: "report"
     }
