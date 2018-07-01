@@ -3,7 +3,6 @@ const Discord = require("discord.js");
 const prefix = botSettings.prefix;
 const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
-const Music = require('discord.js-musicbot-addon');
 
 bot.commands = new Discord.Collection();
 
@@ -41,10 +40,7 @@ fs.readdir("./cmds/", (err, files) => {
         console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
         bot.user.setGame(`${bot.users.size} Users! | $help`, {type: "WATCHING"});          
     });
- 
-    Music.start(bot, {
-        youtubeKey: "API_KEY"
-      });
+
 
  bot.on("message", async message => {
     if(message.author.bot) return;
