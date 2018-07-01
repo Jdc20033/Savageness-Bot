@@ -23,10 +23,11 @@ module.exports.run = async (bot, message, args, input) => {
         deny: ['READ_MESSAGES']
       }])
       .catch(error => message.channel.send(`Couldn't access logs channel because of: ${error}`));
-     
+      
+      message.delete().catch(O_o=>{})
+      
       if(logs) return logs.send(reportEmbed)
      
-      message.delete().catch(O_o=>{});
 
 }    
     module.exports.help = {
