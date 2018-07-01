@@ -17,7 +17,7 @@ module.exports.run = async (bot, message, args, input) => {
     
     let logs = message.guild.channels.find(`name`, "logs");
     if(!logs) message.guild.createChannel('logs', 'text', [{
-        id: [459879569459197386],
+        id: message.guild.id,
         deny: ['MANAGE_MESSAGES'],
         deny: ['SEND_MESSAGES'],
         deny: ['READ_MESSAGES']
