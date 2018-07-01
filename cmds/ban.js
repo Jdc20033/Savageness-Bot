@@ -2,7 +2,7 @@ module.exports.run = async(bot, message, args) => {
 
 
   let member = message.guild.member(message.mentions.members.first() || message.guild.members.get(args[0]));
-  if(member === author.id) return message.channel.send("You cannot ban yourseld!");
+  if(member === message.author.id) return message.channel.send("You cannot ban yourseld!");
   if(!member) return message.channel.send("You didn't mention a user!");
   let reason = args.join(" ").slice(22);
   if(!reason) return message.channel.send("You didn't provide a reason!");
