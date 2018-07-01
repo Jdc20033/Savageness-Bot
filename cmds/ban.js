@@ -5,7 +5,7 @@ module.exports.run = async(bot, message, args) => {
   if(member === message.author.id) return message.channel.send("You cannot ban yourself!");
   if(!member) return message.channel.send("You didn't mention a user!");
   let reason = args.join(" ").slice(22);
-  if(!reason) return message.channel.send("You didn't provide a reason!");
+  if(!reason) reason = ("No reason was given.")
   if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the proper roles!");
   if(!member.kickable) return message.channel.send("I cannot ban this user! Do they have a higher role? Do I have ban permissions?");
   
@@ -27,9 +27,10 @@ module.exports.run = async(bot, message, args) => {
           deny: ['SEND_MESSAGES'],
           deny: ['READ_MESSAGES']
         }])
-  
-  logs.send(banEmbed);
-      }
+
+      if(logs) return logs.send(banEmbed);
+
+}
 exports.help = {
   name: 'ban'
 }
