@@ -9,7 +9,7 @@
         let role2 = message.guild.roles.find(`name`, role);
         if(!role2) return message.channel.send("Enter a role name! Letters are case sensitive.");
       
-        if(!member.roles.has(role2.id)) return message.channel.send("They don't have this role!");
+        if(member.roles.has(role2.id)) return message.channel.send("They don't have this role!");
         await(member.addRole(role2.id));
       
         
