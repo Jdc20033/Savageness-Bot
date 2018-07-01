@@ -15,13 +15,6 @@ module.exports.run = async(bot, message, args) => {
     
     var result = Math.floor((Math.random() * links.length) + 0);
 
-    if(!target) message.reply({files: [
-        {
-            attachment: links[result],
-            name: "meme.png"
-        }
-    ]});
-
     await message.channel.send({files: [
         {   
             attachment: target.links[result],
