@@ -21,13 +21,7 @@ module.exports.run = async(bot, message, args) => {
   message.guild.member(member).ban(reason);
   
   let logs = message.guild.channels.find(`name`, "logs");
-  if(!logs) message.guild.createChannel('logs', 'text', [{
-          id: message.guild.id,
-          deny: ['MANAGE_MESSAGES'],
-          deny: ['SEND_MESSAGES'],
-          deny: ['READ_MESSAGES']
-        }])
-
+  if(!logs) return message.channel.send("No channel named logs!")
       if(logs) return logs.send(banEmbed);
 }
 exports.help = {

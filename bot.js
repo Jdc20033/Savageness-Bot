@@ -40,7 +40,16 @@ fs.readdir("./cmds/", (err, files) => {
         console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
         bot.user.setActivity(`${bot.users.size} Users! | $help`, {type: "WATCHING"});          
     });
-
+    
+    bot.on("guildMemberAdd", async member => {
+        let welcomechannel = member.guild.channels.find(`name`, "welcome_goodbye");
+        welcomechannel.send(`${member} just joined. Hold my beer.`);
+    });
+        
+    bot.on("guildMemberRemove", async member => {
+        let welcomechannel = member.guild.channels.find(`name`, "welcome_goodbye");
+        welcomechannel.send(`We didn't need you anyway ${member}!`);
+        });
 
  bot.on("message", async message => {
     if(message.author.bot) return;
