@@ -11,6 +11,8 @@ module.exports.run = async (bot, message, args) => {
   .setTitle("Dog")
   .setImage(body.url);
 
+   if(setImage = null) setImage = ("https://random.dog/9826-9348-20028.jpg");
+
   message.channel.send(dogembed);
 
   
@@ -19,4 +21,3 @@ module.exports.run = async (bot, message, args) => {
 module.exports.help = {
  name: "dog"
 }
-
