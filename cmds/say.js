@@ -1,36 +1,11 @@
-module.exports.run = async (bot, message, args, input) => {
+module.exports.run = async(bot, message, args) => {
+
+    const sayMessage = args.join(" ");
+    message.delete().catch(O_o=>{}); 
+    message.channel.send(sayMessage);
     
-    sayMessage = args.join(" ");
-       
-    var i;
-    
-    var originalString = sayMessage;
-    var tempString = "";
-    var tempInput = "";
-    
-       
-    for(var x = 0; x < originalString.length; x++){
-
-        if(isNaN(parseInt(originalString.charAt(x)))){
-            
-            tempString += originalString.charAt(x);           
-        }
-        else{
-
-           tempInput += originalString.charAt(x);
-        }
-    }
-
-    sayMessage = tempString;
-    input = parseInt(tempInput);
-
-    var length = parseInt(input);
-    for( i = 0; i < length; i++){
-       
-        message.channel.send(`${sayMessage}`);
-    }
-
 }
-    module.exports.help = {
-        name: "say"
-    }
+
+module.exports.help = {
+    name: "repeat"
+}
