@@ -16,10 +16,15 @@ module.exports.run = async (bot, message, args, input) => {
     .addField("Reason", reason);
     
     let logs = message.guild.channels.find(`name`, "logs");
-    if(!logs) return message.channel.send("Couldn't find logs channel, do I have permission to read it? Is it created?");
+    if(!logs) guild.createChannel('logs', 'text', [{
+        id: guild.id,
+        deny: ['MANAGE_MESSAGES'],
+        deny: ['SEND_MESSAGES'],
+        deny: ['READ_MESSAGES']
+      }])
+      .catch(error => message.channel.send(`Couldn't access logs channel because of: ${error}`));
     
-    
-    message.delete().catch(O_o=>{});
+      message.delete().catch(O_o=>{});
     logs.send(reportEmbed);
 
 }    
