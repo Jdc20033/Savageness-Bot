@@ -20,6 +20,12 @@ if(!target) return message.reply(links[result]);
         message.channel.send(target +  links[result]);
 
 }
+await message.channel.send(`${target}`,{files: [
+    {   
+        attachment: links[result],
+        name: "meme.png"
+    }
+     ]});
     module.exports.help = {
         name: "shoot"
     }
