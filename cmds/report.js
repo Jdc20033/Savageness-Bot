@@ -7,7 +7,7 @@ module.exports.run = async (bot, message, args, input) => {
     if(!reason) return message.channel.send("You did not give a reason!")
 
     let reportEmbed = new Discord.RichEmbed()
-    .setDescription("Reports")
+    .setDescription("**Reports**")
     .setColor("#ff0000")
     .addField("Reported User", `${person} with ID: ${person.id}`)
     .addField("Reported by", `${message.author} with ID: ${message.author.id}`)
@@ -26,8 +26,9 @@ module.exports.run = async (bot, message, args, input) => {
       
       message.delete().catch(O_o=>{})
       
+      setTimeout(myFunc, 3000, 'loading');
+
       if(logs) return logs.send(reportEmbed)
-     
 
 }    
     module.exports.help = {
