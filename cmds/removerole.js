@@ -10,10 +10,10 @@ module.exports.run = async (bot, message, args) => {
     if(!role2) return message.channel.send("Enter a role name! Letters are case sensitive.");
   
     if(!member.roles.has(role2.id)) return message.channel.send("They don't have this role!");
-    await(member.addRole(role2.id));
+    await(member.removeRole(role2.id));
   
     
-    message.channel.send(`${role} was removed from ${member}`);
+    message.channel.send(`${role} was removed from user.`);
 }
     module.exports.help = {
     name: "removerole"

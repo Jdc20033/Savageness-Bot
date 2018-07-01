@@ -13,7 +13,7 @@
         await(member.addRole(role2.id));
       
         
-        message.channel.send(`${role} was given to ${member}`);
+        message.channel.send(`${role} was given to user.`);
     }
         module.exports.help = {
     name: "addrole"
