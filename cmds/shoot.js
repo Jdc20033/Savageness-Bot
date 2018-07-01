@@ -1,5 +1,6 @@
 module.exports.run = async(bot, message, args) => {
     let target = message.mentions.users.first() || message.author;
+    
     const links = [" https://giphy.com/gifs/shot-VdcYTcb2nRSIU?utm_source=media-link&utm_medium=landing&utm_campaign=Media%20Links&utm_term=",
     " https://giphy.com/gifs/4cz3D8Yhyzcg8?utm_source=media-link&utm_medium=landing&utm_campaign=Media%20Links&utm_term=",
     " https://giphy.com/gifs/gun-vhs-cS9lGF8gIBdQs?utm_source=media-link&utm_medium=landing&utm_campaign=Media%20Links&utm_term=",
@@ -15,11 +16,9 @@ module.exports.run = async(bot, message, args) => {
     
     var result = Math.floor((Math.random() * links.length) + 0);
 
-    await message.channel.send(`${target}`, {upload: [
-        {   
-            attachment: links[result]
-        }
-         ]});
+    message.channel.send(`${target}`, {
+        file: links[Math.floor(Math.random() * links.length)]
+    });
 
 
 }
