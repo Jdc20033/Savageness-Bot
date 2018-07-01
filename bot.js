@@ -32,7 +32,6 @@ fs.readdir("./cmds/", (err, files) => {
         bot.user.setActivity(`${bot.users.size} Users! | $help`, {type: "WATCHING"});
     
     });
-    
         
     bot.on("guildCreate", guild => {
         console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
