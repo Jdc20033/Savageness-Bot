@@ -18,7 +18,6 @@ module.exports.run = async (bot, message, args) => {
     fs.writeFile("./warnings", JSON.stringify(warns));
       console.log("Did it.");
     
-    
     let warnembed = new Discord.RichEmbed()
     .setDescription("**Warn**")
     .setAuthor(message.author.username)
