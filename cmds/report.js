@@ -25,7 +25,7 @@ module.exports.run = async (bot, message, args, input) => {
 
       message.delete().catch(O_o=>{})
 
-      logs.send(reportEmbed)
+      if(logs) return logs.send(reportEmbed)
 
 }    
     module.exports.help = {
