@@ -8,7 +8,7 @@ module.exports.run = async (bot, message, args) => {
     if(member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("I cannot warn this user! Do they have a higher role? Do I have permissions?")
     let reason = args.join(" ").slice(22);
     if(!reason) reason = "No reason given"
-    
+    let warns = message.member.id
     if(!warns[member.id]) warns[member.id] = {
       warns: 0
     };
