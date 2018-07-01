@@ -3,6 +3,7 @@ const Discord = require("discord.js");
 const prefix = botSettings.prefix;
 const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
+const Music = require('discord.js-musicbot-addon');
 
 bot.commands = new Discord.Collection();
 
@@ -28,21 +29,24 @@ fs.readdir("./cmds/", (err, files) => {
   
     bot.on("ready", () => {
         console.log(`${bot.user.username} has started! With ${bot.users.size} users, in ${bot.channels.size} channels of ${bot.guilds.size} servers.`);
-        bot.user.setActivity(`${bot.users.size} Users. | $help`, {type: "WATCHING"});
+        bot.user.setActivity(`${bot.users.size} Users! | $help`, {type: "WATCHING"});
     
     });
     
         
     bot.on("guildCreate", guild => {
         console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
-            bot.user.setActivity(`${bot.users.size} Users. | $help`, {type: "WATCHING"});
+            bot.user.setActivity(`${bot.users.size} Users! | $help`, {type: "WATCHING"});
     });
          
     bot.on("guildDelete", guild => {
         console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
-        bot.user.setGame(`${bot.users.size} Users. | $help`, {type: "WATCHING"});          
+        bot.user.setGame(`${bot.users.size} Users! | $help`, {type: "WATCHING"});          
     });
-
+ 
+    Music.start(client, {
+        youtubeKey: "API_KEY"
+      });
 
  bot.on("message", async message => {
     if(message.author.bot) return;
