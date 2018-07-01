@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args) => {
     
     warns[member.id].warns++;
     
-    fs.writeFile("./warnings", JSON.stringify(warns));
+    fs.writeFile("./warnings.json", JSON.stringify(warns));
       console.log("Did it.");
     
     let warnembed = new Discord.RichEmbed()
