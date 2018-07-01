@@ -16,16 +16,15 @@ const links = [" https://media.giphy.com/media/VdcYTcb2nRSIU/giphy.gif",
 var result = Math.floor((Math.random() * links.length) + 0);
 
 let target = message.mentions.users.first() || message.author;
-if(!target) return message.reply(links[result]);
-        message.channel.send(target +  links[result]);
 
-}
 await message.channel.send(`${target}`,{files: [
     {   
         attachment: links[result],
         name: "meme.png"
     }
      ]});
+     if(!target) return message.reply(links[result]);
+    }
     module.exports.help = {
         name: "shoot"
     }
