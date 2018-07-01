@@ -14,9 +14,9 @@ module.exports.run = async(bot, message, args) => {
     " https://media.giphy.com/media/CZpro4AZHs436/giphy.gif"];
     
 
-    message.channel.send(`${target}`, {
-        file: links[Math.floor(Math.random() * links.length) + 0]
-    });
+    const attachment = new MessageAttachment('https://i.imgur.com/w3duR07.png');
+
+    message.channel.send(attachment);
 
 
 }
