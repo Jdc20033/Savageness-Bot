@@ -25,8 +25,6 @@ module.exports.run = async (bot, message, args, input) => {
       .catch(error => message.channel.send(`Couldn't access logs channel because of: ${error}`));
       
       message.delete().catch(O_o=>{})
-      
-      setTimeout(myFunc, 3000, 'loading');
 
       if(logs) return logs.send(reportEmbed)
 
