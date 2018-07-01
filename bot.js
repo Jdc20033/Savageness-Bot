@@ -43,7 +43,7 @@ fs.readdir("./cmds/", (err, files) => {
     
     bot.on("guildMemberAdd", async member => {
         let welcomechannel = member.guild.channels.find(`name`, "welcome_goodbye");
-        welcomechannel.send(`${member} just joined. Hold my beer.`);
+        welcomechannel.send(`${member} just joined! Welcome to the party!`);
     });
         
     bot.on("guildMemberRemove", async member => {
