@@ -1,5 +1,5 @@
 module.exports.run = async(bot, message, args) => {
-
+  const Discord = require("discord.js");
 
   let member = message.guild.member(message.mentions.members.first() || message.guild.members.get(args[0]));
   if(member === message.author.id) return message.channel.send("You cannot ban yourself!");
