@@ -1,7 +1,6 @@
 module.exports.run = async (bot, message, args) => {
     const Discord = require("discord.js");
     const fs = require("fs");
-    const ms = require("ms");
     
     if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.channel.send("You don't have the proper roles!");
     let member = message.guild.member(message.mentions.members.first() || message.guild.members.get(args[0]));
