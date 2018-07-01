@@ -1,12 +1,12 @@
 module.exports.run = async(bot, message, args) => {
     let target = message.mentions.users.first() || message.author;
-    const links = [" https://media.giphy.com/media/VdcYTcb2nRSIU/giphy.gif",
-    " http://media.giphy.com/media/4cz3D8Yhyzcg8/giphy.gif",
-    " http://media.giphy.com/media/cS9lGF8gIBdQs/giphy.gif",
-    " http://media.giphy.com/media/MZDXTFeePBia4/giphy.gif",
-    " http://media.giphy.com/media/9umH7yTO8gLYY/giphy.gif",
-    " http://media.giphy.com/media/RXbc4wDSqYs3m/giphy.gif",
-    " http://media.giphy.com/media/FEq9xWq9fauLC/giphy.gif",
+    const links = [" https://giphy.com/gifs/shot-VdcYTcb2nRSIU?utm_source=media-link&utm_medium=landing&utm_campaign=Media%20Links&utm_term=",
+    " https://giphy.com/gifs/4cz3D8Yhyzcg8?utm_source=media-link&utm_medium=landing&utm_campaign=Media%20Links&utm_term=",
+    " https://giphy.com/gifs/gun-vhs-cS9lGF8gIBdQs?utm_source=media-link&utm_medium=landing&utm_campaign=Media%20Links&utm_term=",
+    " https://giphy.com/gifs/MZDXTFeePBia4?utm_source=media-link&utm_medium=landing&utm_campaign=Media%20Links&utm_term=",
+    " https://giphy.com/gifs/9umH7yTO8gLYY?utm_source=media-link&utm_medium=landing&utm_campaign=Media%20Links&utm_term=",
+    " https://giphy.com/gifs/shooting-oyl-RXbc4wDSqYs3m?utm_source=media-link&utm_medium=landing&utm_campaign=Media%20Links&utm_term=",
+    " https://giphy.com/gifs/kurt-russell-john-caenter-big-trouble-in-little-china-FEq9xWq9fauLC?utm_source=media-link&utm_medium=landing&utm_campaign=Media%20Links&utm_term=",
     " https://i.makeagif.com/media/5-08-2014/ircXAq.gif",
     " https://i.makeagif.com/media/7-29-2014/9_vBku.gif",
     " http://i.imgur.com/IoJ4AGS.gif",
@@ -17,8 +17,7 @@ module.exports.run = async(bot, message, args) => {
 
     await message.channel.send(`${target}`, {files: [
         {   
-            attachment: links[result],
-            name: "giphy.gif"
+            attachment: links[result]
         }
          ]});
 
