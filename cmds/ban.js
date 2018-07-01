@@ -10,7 +10,7 @@ module.exports.run = async(bot, message, args) => {
   if(!member.kickable) return message.channel.send("I cannot ban this user! Do they have a higher role? Do I have ban permissions?");
   
   let banEmbed = new Discord.RichEmbed()
-  .setDescription("**ban**")
+  .setDescription("**Ban**")
   .setColor("#ff0000")
   .addField("Banned user", `${member} with ID ${member.id}`)
   .addField("Banned by", `<@${message.author.id}> with ID ${message.author.id}`)
@@ -18,6 +18,7 @@ module.exports.run = async(bot, message, args) => {
   .addField("Time", message.createdAt)
   .addField("Reason", reason);
   
+  message.guild.member(member).ban(reason);
   
   let logs = message.guild.channels.find(`name`, "logs");
   if(!logs) message.guild.createChannel('logs', 'text', [{
@@ -27,7 +28,6 @@ module.exports.run = async(bot, message, args) => {
           deny: ['READ_MESSAGES']
         }])
   
-  message.guild.member(member).ban(reason);
   logs.send(banEmbed);
       }
 exports.help = {
