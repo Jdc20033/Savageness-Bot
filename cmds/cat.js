@@ -5,7 +5,7 @@ module.exports.run = async (bot, message, args) => {
 
   let {body} = await superagent
 
-    .get(`https://aws.random.cat/meow`)
+    .get(`http:aws.random.cat//meow`)
 
     let catembed = new Discord.RichEmbed()
   .setColor("#ff0000")
