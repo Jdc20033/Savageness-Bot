@@ -2,11 +2,12 @@ module.exports.run = async(bot, message, args) => {
 
 
   let member = message.guild.member(message.mentions.members.first() || message.guild.members.get(args[0]));
+  if(member === author.id) return message.channel.send("You cannot ban yourseld!");
   if(!member) return message.channel.send("You didn't mention a user!");
   let reason = args.join(" ").slice(22);
-  if(!reason) return;
+  if(!reason) return message.channel.send("You didn't provide a reason!");
   if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the proper roles!");
-  if(member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("I cannot ban this user! Do they have a higher role?Do I have ban permissions?");
+  if(member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("I cannot ban this user! Do they have a higher role? Do I have ban permissions?");
   
   let banEmbed = new Discord.RichEmbed()
   .setDescription("**ban**")
