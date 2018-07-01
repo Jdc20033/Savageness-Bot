@@ -44,7 +44,7 @@ fs.readdir("./cmds/", (err, files) => {
         bot.user.setGame(`${bot.users.size} Users! | $help`, {type: "WATCHING"});          
     });
  
-    Music.start(client, {
+    Music.start(bot, {
         youtubeKey: "API_KEY"
       });
 
