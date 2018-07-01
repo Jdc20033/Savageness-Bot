@@ -1,7 +1,7 @@
 module.exports.run = async(bot, message, args) => {
 
 
-  let member = message.guild.member(message.mentions.user.first() || message.guild.members.get(args[0]));
+  let member = message.guild.member(message.mentions.members.first() || message.guild.members.get(args[0]));
   if(!member) return message.channel.send("You didn't mention a user!");
   let reason = args.join(" ").slice(22);
   if(!reason) return;
