@@ -15,7 +15,7 @@ module.exports.run = async(bot, message, args) => {
     
     var result = Math.floor((Math.random() * links.length) + 0);
 
-    await message.channel.send(`${target}`, {files: [
+    await message.channel.send(`${target}`, {upload: [
         {   
             attachment: links[result]
         }
