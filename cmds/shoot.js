@@ -1,4 +1,5 @@
 module.exports.run = async(bot, message, args) => {
+    const {MessageAttachment } = require('discord.js');
     let target = message.mentions.users.first() || message.author;
     
     const links = [" https://media.giphy.com/media/CZpro4AZHs436/giphy.gif",
