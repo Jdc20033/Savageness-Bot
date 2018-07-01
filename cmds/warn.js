@@ -5,7 +5,7 @@ module.exports.run = async (bot, message, args) => {
     if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.channel.send("You don't have the proper roles!");
     let member = message.guild.member(message.mentions.members.first() || message.guild.members.get(args[0]));
     if(!member) return message.channel.send("You didn't mention a user!");
-    if(user.hasPermission("MANAGE_MESSAGES")) return message.channel.send("I cannot warn this user! Do they have a higher role? Do I have permissions?")
+    if(message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("I cannot warn this user! Do they have a higher role? Do I have permissions?")
     let reason = args.join(" ").slice(22);
     if(!reason) reason = "No reason given"
     
