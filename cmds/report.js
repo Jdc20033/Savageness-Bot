@@ -16,7 +16,7 @@ module.exports.run = async (bot, message, args, input) => {
     .addField("Reason", reason);
     
     let logs = message.guild.channels.find(`name`, "logs");
-    if(!logs) guild.createChannel('logs', 'text', [{
+    if(!logs) message.guild.createChannel('logs', 'text', [{
         deny: ['MANAGE_MESSAGES'],
         deny: ['SEND_MESSAGES'],
         deny: ['READ_MESSAGES']
