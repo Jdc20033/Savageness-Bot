@@ -42,14 +42,19 @@ fs.readdir("./cmds/", (err, files) => {
     });
     
     bot.on("guildMemberAdd", async member => {
+        let picture = message.mentions.users.first()
+        let memberembed = new Discord.RichEmbed()
+        .setDescription(`**Welcome to the server ${member}!**`)
+        .setColor("#ff0000")
+        .setThumbnail(picture)
         let welcomechannel = member.guild.channels.find(`name`, "welcome_goodbye");
-        welcomechannel.send(`${member} just joined! Welcome to the party!`);
+        welcomechannel.send(memberembed);
     });
         
     bot.on("guildMemberRemove", async member => {
         let welcomechannel = member.guild.channels.find(`name`, "welcome_goodbye");
         welcomechannel.send(`We didn't need you anyway ${member}!`);
-        });
+    });
 
  bot.on("message", async message => {
     if(message.author.bot) return;
