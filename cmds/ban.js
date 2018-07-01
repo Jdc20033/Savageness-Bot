@@ -29,7 +29,6 @@ module.exports.run = async(bot, message, args) => {
         }])
 
       if(logs) return logs.send(banEmbed);
-
 }
 exports.help = {
   name: 'ban'
