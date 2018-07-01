@@ -1,5 +1,6 @@
 module.exports.run = async (bot, message, args, input) => {
-
+    const Discord = require("discord.js");
+    
     let person = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!person) return message.channel.send("You did not mention a user!");
     let reason = args.join(" ").slice(22);
