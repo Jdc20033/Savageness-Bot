@@ -1,11 +1,7 @@
 module.exports.run = async(bot, message, args) => {
-    
-    
-    
-    
+           
   if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the proper roles!");
-    
-    
+      
     let member = message.mentions.members.first();
     if(!member)
       return message.channel.send("You did not specify a user!");

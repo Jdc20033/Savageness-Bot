@@ -1,52 +1,39 @@
 module.exports.run = async (bot, message, args) => {
 const Discord = require("discord.js");
-
+     
 let embed = new Discord.RichEmbed()
-              .setAuthor("ØneŁife")
-              .setDescription("This is the bot creator's info!")
+              .setDescription("**Commands**!")
               .setColor("#FF0000")
-              .addField("Full Username", `ØneŁife#1800`)
-              .addField("ID", "323989674399891459")
-              .addField("Created At", "4/17/2018");      
-let embed2 = new Discord.RichEmbed()
-              .setDescription("Commands!")
-              .setColor("#FF0000")
-              .addField("**Everyone.**", "Commands For Everyone Are Below.")
-              .addField("1. **__$avatar__**", "Posts profile picture of target. If no target is selected, It will show the command callers profile picture.")
-              .addField("2. **__$servericon__**", "Shows the current server icon.")
-              .addField("3. **__$ping__**", "Shows the bots ping to the server.")
-              .addField("4. **__$say__**", "Makes the bot repeat what you enter how many times you say. <$say hi 10>")
-              .addField("5. **__$repeat__**", "Makes the bot repeat your message.")
-              .addField("6. **__$roll__**", "Rolls a number.")
-              .addField("7. **__$coinflip__**", "Flips a coin.")
-              .addField("8. **__$insult__**", "What are you stupid? Read the name of the command.")
-             // .addField("9. **__$meme__**", "Posts a meme.")
-             // .addField("8. **__$spam__**", "Spams amount of messages hardcore. <$spam  <message> <5>")
-             // .addField("10. **__$rules__**", "Posts recommended server rules.")
-              .addField("9. **__$8ball__**", "Ask the 8ball a question...")
-              .addField("10. **__$report__**", "Use this command to report a bot issue.")
-              // .addField("12. **__$report__**", "Type in a broken code or command.")
-            //  .addField("13. **__$love__**", "Type in a broken code or command.")
-             // .addField("14. **__$kiss__**", "Kisses whoever you @.")
-             // .addField("15. **__$revive__**", "Revives whoever you @.")
-             // .addField("16. **__$shoot__**", "Shoots whoever you @.")
-            //  .addField("17. **__$slap__**", "Slaps whoever you @.")
-             // .addField("18. **__$stab__**", "Stabs whoever you @.")
-              .addField("**Admins only.**", "Commands For Admins Are Below.")
-              .addField("1. **__$kick__**", "Kicks member from server. <$kick @ >")
-              .addField("2. ** __$ban__**", "Bans a member from server. <$ban @ >")
-              .addField("3. **__$mute__**", "Mutes a member for an amount of time. <$mute @ <5> >")
-              .addField("4. **__$unmute__**", "Unmutes a member. <$unmute @ >")          
-              .addField("5. **__$purge__**", "Wipes messages up to 14 days old. <$purge 10>.")
+              .addField("1. **$8ball**", "Ask the legendary 8ball a question and get your long awaited answer.**Usage** $8ball Why don't girls love me?")
+              .addField("2. **$avatar**", "Shows a users avatar. **Usage** $avatar @Bob")
+              .addField("3. **$coinflip**", "Flips a coin to settle bets..Bob won smh. **Usage** $coinflip")
+              .addField("4. **$help**", "Shows this page. **Usage** $help")
+              .addField("5. **$insult**", "Insults someone. Preferably Bob. **Usage** $insult @Bob")
+              .addField("6. **$ping**", "Shows bots connection to the current server. **Usage** $ping")
+              .addField("7. **$poll**", "Ask a question and get other peoples opinions on it. Fuck off Bob we don't want your opinion. **Usage** $poll Ban bob?")
+              .addField("8. **$repeat**", "Bot repeats what you say how many times you say. **Usage** $repeat Kys Bob 5")
+              .addField("9. **$report**", "Send a custom error report about a command. **Usage** $report Ban doesn't work")
+              .addField("10. **$roll**", "Roll a dice to settle bets..Bob still won smh. **Usage** $roll")
+              .addField("11. **$say**", "Bot says something then deletes the evidence. **Usage** $say Bob I hate you")
+              .addField("12. **$servericon**", "Shows the current servers icon if any. **Usage** $servericon")
+              .addField("13. **$shoot**", "Shoot someone.. preferably Bob. **Usage** $shoot @Bob")
+              //.addField("14. **$**", "")
+              //.addField("15. **$**", "")
+              //.addField("16. **$**", "")
+              //.addField("17. **$**", "")
+              //.addField("18. **$**", "")
+              //.addField("19. **$**", "")
+              //.addField("20. **$**", "")
+              .addField("**Moderation**")
+              .addField("1. **$ban**", "Bans a user from current server. **Usage** $ban @Bob")
+              .addField("2. **$mute**", "Mutes a user from current server for a certain amount of time. **Usage** $mute @Bob 5")
+              .addField("3. **$unmute**", "Unmutes a muted user from current server. **Usage** $unmute @Jimmy")
+              .addField("4. **$purge**", "Deletes messages from current channel up to 14 days old max of 100. **Usage** $purge 10")
+             
               message.author.send(embed);
-              message.author.send(embed2);
               message.reply("Sent. Check your direct messages.");
 
-
 }
-
-
-
     module.exports.help = {
         name: "help"
     }

@@ -1,6 +1,4 @@
 module.exports.run = async (bot, message, args, input) => {
-const Discord = require("discord.js");
-
   
 var sayings = [" I'd like to see things from your point of view, but my head doesn't go that far up my ass.",
 " I believe in respect for the dead, in fact, I could only respect you if you were dead.",

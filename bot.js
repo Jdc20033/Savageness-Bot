@@ -4,7 +4,6 @@ const prefix = botSettings.prefix;
 const fs = require("fs");
 const bot = new Discord.Client({disableEveryone: true});
 
-
 bot.commands = new Discord.Collection();
 
 
@@ -34,19 +33,19 @@ fs.readdir("./cmds/", (err, files) => {
     });
     
         
-        bot.on("guildCreate", guild => {
-            console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
+    bot.on("guildCreate", guild => {
+        console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
             bot.user.setActivity(`$help | Playing With ${bot.channels.size} Users!`, {type: "WATCHING"});
-        });
+    });
          
-          bot.on("guildDelete", guild => {
-            console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
-            bot.user.setGame(`$help | Playing With ${bot.channels.size} Users!`, {type: "WATCHING"});
-     });
+    bot.on("guildDelete", guild => {
+        console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
+        bot.user.setGame(`$help | Playing With ${bot.channels.size} Users!`, {type: "WATCHING"});          
+    });
 
      bot.on("ready", () => {
          bot.user.setUsername('Savage Bot');
-     });
+    });
 
 
 
@@ -66,4 +65,6 @@ fs.readdir("./cmds/", (err, files) => {
     if(cmd) cmd.run(bot, message, args, input);
   
 });
+
+
 bot.login(process.env.BOT_TOKEN);

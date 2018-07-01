@@ -1,11 +1,7 @@
 module.exports.run = async (bot, message, args, input) => {
-    const Discord = require("discord.js");
     
     sayMessage = args.join(" ");
        
-        
-
-
     var i;
     
     var originalString = sayMessage;
@@ -33,9 +29,6 @@ module.exports.run = async (bot, message, args, input) => {
        
         message.channel.send(`${sayMessage}`);
     }
-
-    
-
 
 }
     module.exports.help = {
