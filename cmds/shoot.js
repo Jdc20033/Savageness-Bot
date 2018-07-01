@@ -1,6 +1,6 @@
 module.exports.run = async(bot, message, args) => {
     const {MessageAttachment} = require('discord.js');
-    const attachment = MessageAttachment('https://i.imgur.com/w3duR07.png');
+    const attachment = new MessageAttachment('https://i.imgur.com/w3duR07.png');
 
     message.channel.send(attachment);
 
