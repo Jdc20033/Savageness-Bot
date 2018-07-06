@@ -2,7 +2,7 @@ module.exports.run = async (bot, message, args) => {
 
 
 
-  let tomute = message.mentions.members.first() || message.guild.members.get(args[0]);
+  const tomute = message.mentions.members.first() || message.guild.members.get(args[0]);
   if(!tomute) return message.channel.send("You did not mention a user!");
   if(tomute.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the proper roles!");
   let muterole = message.guild.roles.find(`name`, "Muted");
@@ -29,11 +29,11 @@ module.exports.run = async (bot, message, args) => {
      if (!mutetime) return message.channel.send("You didn't add a time!");
 
      await(tomute.addRole(muterole.id));
-     message.channel.send(`Muted ${toMute.user.tag}.` );
+     message.channel.send(`Muted ${toMute.user.tag}.`);
    
      setTimeout(function(){
        tomute.removeRole(muterole.id);
-       message.channel.send(`Unmuted ${toMute.user.tag}.` );
+       message.channel.send(`Unmuted ${toMute.user.tag}.`);
      }, (mutetime));
     }
 module.exports.help = {
