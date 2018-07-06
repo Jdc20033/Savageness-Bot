@@ -33,7 +33,6 @@ module.exports.run = async (bot, message, args) => {
    
      setTimeout(function(){
        tomute.removeRole(muterole.id);
-       message.channel.send(`Unmuted ${tomute.user.tag}.`);
      }, (mutetime));
     }
 module.exports.help = {
