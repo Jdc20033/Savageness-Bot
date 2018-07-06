@@ -32,5 +32,5 @@ module.exports.run = async (bot, message, args, input) => {
 
 }
     module.exports.help = {
-        name: "say"
+        name: "repeat"
     }
