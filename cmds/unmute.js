@@ -1,5 +1,5 @@
 module.exports.run = async (bot, message, args) => {
-    if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You don't have the proper roles!");
+    if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("User has a higher role equal to or higher than you!");
   
               let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
               if(!toMute) return message.channel.send("You did not specify a user!");
