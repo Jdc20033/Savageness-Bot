@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, args) => {
 
   const tomute = message.mentions.members.first() || message.guild.members.get(args[0]);
   if(!tomute) return message.channel.send("You did not mention a user!");
-  if(tomute.hasPermission("MANAGE_MESSAGES")) return message.channel.send("User has a higher role equal to or higher than you!");
+  if(tomute.hasPermission("MANAGE_MESSAGES")) return message.channel.send("User has Administrator or Moderator roles.");
   let muterole = message.guild.roles.find(`name`, "Muted");
 
   if(!muterole){
